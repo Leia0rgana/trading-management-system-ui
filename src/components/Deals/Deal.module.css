@@ -1,11 +1,42 @@
-.deal {
+/* .deal {
   display: flex;
-  align-items: center;
-  padding: 40px 20px;
+  flex-direction: column;
+  padding: 20px 10px;
   margin: 15px 0;
-  font-size: 1.5rem;
   border-radius: 5px;
   border: 2px solid #555;
-  color: #112d49;
-  background-color: #fbfef9;
+} */
+
+.dealName {
+  text-align: left;
+  color: #000000;
+  font-weight: 600;
+  padding-top: 5px;
+}
+
+.dealTicker {
+  text-align: left;
+  color: #1e2f29ca;
+  padding-top: 5px;
+}
+
+.dealProfit {
+  text-align: right;
+  padding-top: 5px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(39, 39, 39, 0.1);
+  margin-bottom: 9px;
+}
+
+.cell {
+  padding: 5px;
 }
