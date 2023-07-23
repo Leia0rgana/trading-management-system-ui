@@ -2,7 +2,7 @@
 .dealTicker,
 .dealProfit,
 .dealProfitInPercent {
-  padding-top: 5px;
+  padding: 5px;
 }
 
 .dealName {
@@ -41,8 +41,11 @@
 .row {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid rgba(39, 39, 39, 0.1);
-  margin-bottom: 9px;
+  border-bottom: 1px solid rgba(39, 39, 39, 0.1);
+}
+
+.row:hover {
+  background-color: rgb(246, 245, 245);
 }
 
 .cell {
