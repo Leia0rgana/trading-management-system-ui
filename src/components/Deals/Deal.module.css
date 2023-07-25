@@ -39,13 +39,9 @@
 }
 
 .row {
+  width: 95%;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(39, 39, 39, 0.1);
-}
-
-.row:hover {
-  background-color: rgb(246, 245, 245);
 }
 
 .cell {
