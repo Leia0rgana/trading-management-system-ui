@@ -4,17 +4,12 @@ import axios from 'axios'
 
 function DealList() {
   const [deals, setDeals] = useState([])
-  const [error, setError] = useState('')
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const response = await axios.get('http://localhost:8083/deals/closed')
-        const deals = await response.data
-        setDeals(deals)
-      } catch (error) {
-        setError(error.message)
-      }
+      const response = await axios.get('http://localhost:8083/deals/closed')
+      const deals = await response.data
+      setDeals(deals)
     }
     fetchData()
   }, [])
