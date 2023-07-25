@@ -23,6 +23,13 @@ function DealList() {
           ticker={deal.ticker}
           profit={deal.profit}
           profitInPercent={deal.profitInPercents}
+          sum={deal.sum}
+          price={deal.price}
+          orderDirection={deal.orderDirection}
+          dateTime={deal.dateTime}
+          isOpen={deal.isOpen}
+          quantity={deal.quantity}
+          closedDeal={deal.closedDeal}
         />
       ))}
     </>

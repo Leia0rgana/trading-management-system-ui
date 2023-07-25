@@ -1,7 +1,27 @@
 import styles from './Deal.module.css'
 import { Accordion } from 'react-bootstrap'
 
-function Deal({ name, ticker, profit, profitInPercent }) {
+function Deal({
+  name,
+  ticker,
+  profit,
+  profitInPercent,
+  sum,
+  price,
+  orderDirection,
+  dateTime,
+  isOpen,
+  quantity,
+  closedDeal,
+}) {
+  const {
+    orderDirection: closedOrderDirection,
+    ticker: closedTicker,
+    dateTime: closedDateTime,
+    quantity: closedQuantity,
+    price: closedPrice,
+    sum: closedSum,
+  } = closedDeal
   return (
     <Accordion>
       <Accordion.Item eventKey="0">
@@ -25,7 +45,26 @@ function Deal({ name, ticker, profit, profitInPercent }) {
             </div>
           </div>
         </Accordion.Header>
-        <Accordion.Body></Accordion.Body>
+        <Accordion.Body>
+          <div>
+            <p>Sum: {sum}</p>
+            <p>Price: {price}</p>
+            <p>{orderDirection}</p>
+            <p>{dateTime}</p>
+            <p>Quantity: {quantity}</p>
+            <p>
+              Closed deal:
+              {[
+                closedOrderDirection,
+                closedTicker,
+                closedDateTime,
+                closedQuantity,
+                closedPrice,
+                closedSum,
+              ]}
+            </p>
+          </div>
+        </Accordion.Body>
       </Accordion.Item>
     </Accordion>
   )
