@@ -47,3 +47,18 @@
 .cell {
   padding: 5px;
 }
+
+.content {
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 7px;
+}
+
+.time {
+  color: rgba(10, 8, 10, 0.544);
+}
+
+.arrow {
+  text-align: right;
+  width: 93%;
+}
