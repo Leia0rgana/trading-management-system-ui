@@ -1,6 +1,6 @@
 import styles from './Deal.module.css'
 import { Accordion } from 'react-bootstrap'
-
+import { LuArrowUp, LuArrowDown } from 'react-icons/lu'
 function Deal({
   name,
   ticker,
@@ -10,18 +10,15 @@ function Deal({
   price,
   orderDirection,
   dateTime,
-  isOpen,
   quantity,
   closedDeal,
 }) {
   const {
-    orderDirection: closedOrderDirection,
-    ticker: closedTicker,
     dateTime: closedDateTime,
-    quantity: closedQuantity,
     price: closedPrice,
     sum: closedSum,
   } = closedDeal
+
   return (
     <Accordion>
       <Accordion.Item eventKey="0">
@@ -37,32 +34,46 @@ function Deal({
                   profit < 0 ? styles.negativeProfit : styles.positiveProfit
                 }`}
               >
-                {profit}
+                {profit > 0 ? `+` : ``}
+                {profit.replace('.', ',')} {'\u20bd'}
               </div>
               <div className={styles.dealProfitInPercent}>
-                {profitInPercent}%
+                {profitInPercent.replace('.', ',')} %
               </div>
             </div>
           </div>
         </Accordion.Header>
         <Accordion.Body>
-          <div>
-            <p>Sum: {sum}</p>
-            <p>Price: {price}</p>
-            <p>{orderDirection}</p>
-            <p>{dateTime}</p>
-            <p>Quantity: {quantity}</p>
-            <p>
-              Closed deal:
-              {[
-                closedOrderDirection,
-                closedTicker,
-                closedDateTime,
-                closedQuantity,
-                closedPrice,
-                closedSum,
-              ]}
-            </p>
+          <div className={styles.content}>
+            <div>
+              {orderDirection.includes('buy'.toUpperCase())
+                ? 'Покупка'
+                : 'Продажа'}{' '}
+              {quantity.toString().endsWith('1') ? 'фьючерса' : 'фьючерсов'} по
+              цене {price.replace('.', ',')} пт. на сумму{' '}
+              {sum.replace('.', ',')} {'\u20bd'}{' '}
+              <span className={styles.time}>
+                {dateTime.slice(dateTime.indexOf('T') + 1)}
+              </span>
+            </div>
+            <div className={styles.arrow}>
+              {orderDirection.includes('buy'.toUpperCase()) ? (
+                <>
+                  <LuArrowUp /> long
+                </>
+              ) : (
+                <>
+                  <LuArrowDown /> short
+                </>
+              )}
+            </div>
+            <div>
+              Сделка закрыта по цене {closedPrice.replace('.', ',')} пт. на
+              сумму {closedSum.replace('.', ',')} {'\u20bd'}{' '}
+              <span className={styles.time}>
+                {closedDateTime.slice(closedDateTime.indexOf('T') + 1)}
+              </span>
+            </div>
           </div>
         </Accordion.Body>
       </Accordion.Item>
