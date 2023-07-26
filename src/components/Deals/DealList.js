@@ -27,7 +27,6 @@ function DealList() {
           price={deal.price}
           orderDirection={deal.orderDirection}
           dateTime={deal.dateTime}
-          isOpen={deal.isOpen}
           quantity={deal.quantity}
           closedDeal={deal.closedDeal}
         />
