@@ -44,19 +44,8 @@ function Deal({
           </div>
         </Accordion.Header>
         <Accordion.Body>
-          <div className={styles.content}>
-            <div>
-              {orderDirection.includes('buy'.toUpperCase())
-                ? 'Покупка'
-                : 'Продажа'}{' '}
-              {quantity.toString().endsWith('1') ? 'фьючерса' : 'фьючерсов'} по
-              цене {price.replace('.', ',')} пт. на сумму{' '}
-              {sum.replace('.', ',')} {'\u20bd'}{' '}
-              <span className={styles.time}>
-                {dateTime.slice(dateTime.indexOf('T') + 1)}
-              </span>
-            </div>
-            <div className={styles.arrow}>
+          <div className={`${styles.content} ${styles.row}`}>
+            <div className={styles.cell}>
               {orderDirection.includes('buy'.toUpperCase()) ? (
                 <>
                   <LuArrowUp /> long
@@ -67,12 +56,23 @@ function Deal({
                 </>
               )}
             </div>
-            <div>
-              Сделка закрыта по цене {closedPrice.replace('.', ',')} пт. на
-              сумму {closedSum.replace('.', ',')} {'\u20bd'}{' '}
-              <span className={styles.time}>
-                {closedDateTime.slice(closedDateTime.indexOf('T') + 1)}
-              </span>
+            <div className={`${styles.cell} ${styles.sentence}`}>
+              <p>
+                {orderDirection.includes('buy'.toUpperCase())
+                  ? 'Покупка'
+                  : 'Продажа'}{' '}
+                {quantity.toString().endsWith('1') ? 'фьючерса' : 'фьючерсов'}{' '}
+                по цене {price.replace('.', ',')} пт. на сумму{' '}
+                {sum.replace('.', ',')} {'\u20bd'}
+              </p>
+              <p>
+                Сделка закрыта по цене {closedPrice.replace('.', ',')} пт. на
+                сумму {closedSum.replace('.', ',')} {'\u20bd'}
+              </p>
+            </div>
+            <div className={`${styles.cell} ${styles.time}`}>
+              <p>{dateTime.slice(dateTime.indexOf('T') + 1)}</p>
+              <p>{closedDateTime.slice(closedDateTime.indexOf('T') + 1)}</p>
             </div>
           </div>
         </Accordion.Body>

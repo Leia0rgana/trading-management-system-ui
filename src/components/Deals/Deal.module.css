@@ -45,20 +45,17 @@
 }
 
 .cell {
-  padding: 5px;
+  white-space: nowrap;
 }
 
 .content {
   text-align: left;
-  padding-top: 10px;
-  padding-bottom: 7px;
 }
 
 .time {
   color: rgba(10, 8, 10, 0.544);
+  padding-top: 25px;
 }
-
-.arrow {
-  text-align: right;
-  width: 93%;
+.sentence {
+  padding-top: 25px;
 }
