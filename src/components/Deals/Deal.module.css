@@ -45,11 +45,17 @@
 }
 
 .cell {
-  white-space: nowrap;
+  white-space: normal;
+  padding-right: 15px;
+}
+
+.cell:last-child {
+  padding-right: 0px;
 }
 
 .content {
   text-align: left;
+  overflow: auto;
 }
 
 .time {

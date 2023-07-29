@@ -31,7 +31,11 @@ function Deal({
             <div className={styles.cell}>
               <div
                 className={`${styles.dealProfit} ${
-                  profit < 0 ? styles.negativeProfit : styles.positiveProfit
+                  profit === '0'
+                    ? ' '
+                    : profit < 0
+                    ? styles.negativeProfit
+                    : styles.positiveProfit
                 }`}
               >
                 {profit > 0 ? `+` : ``}
@@ -61,7 +65,9 @@ function Deal({
                 {orderDirection.includes('buy'.toUpperCase())
                   ? 'Покупка'
                   : 'Продажа'}{' '}
-                {quantity.toString().endsWith('1') ? 'фьючерса' : 'фьючерсов'}{' '}
+                {`${quantity} ${
+                  quantity.toString().endsWith('1') ? 'фьючерса' : 'фьючерсов'
+                }`}{' '}
                 по цене {price.replace('.', ',')} пт. на сумму{' '}
                 {sum.replace('.', ',')} {'\u20bd'}
               </p>
