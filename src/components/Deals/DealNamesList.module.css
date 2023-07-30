@@ -4,5 +4,5 @@
   justify-content: space-between;
   flex-wrap: nowrap;
   margin-bottom: 10px;
-  overflow-block: scroll;
+  overflow: auto;
 }
