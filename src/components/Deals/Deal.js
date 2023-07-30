@@ -42,6 +42,7 @@ function Deal({
                 {profit.replace('.', ',')} {'\u20bd'}
               </div>
               <div className={styles.dealProfitInPercent}>
+                {profit > 0 ? `+` : ``}
                 {profitInPercent.replace('.', ',')} %
               </div>
             </div>
