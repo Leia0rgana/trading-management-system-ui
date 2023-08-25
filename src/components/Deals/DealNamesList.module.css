@@ -1,8 +1,14 @@
 .namesList {
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   justify-content: space-between;
-  flex-wrap: nowrap;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   overflow: auto;
+  align-items: normal;
+}
+
+.button {
+  margin: 0 10px;
+  padding: 10px;
+  border-color: rgb(27, 133, 50);
 }
