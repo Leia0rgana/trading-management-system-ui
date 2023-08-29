@@ -9,17 +9,24 @@ class DealsByDate {
   }
 }
 
-function DealList() {
+function DealList({ selectedNames }) {
   const [deals, setDeals] = useState([])
+
+  const query =
+    selectedNames.length === 0
+      ? 'http://localhost:8083/deals/closed'
+      : `http://localhost:8083/deals/closed?futureNames=${selectedNames.join(
+          ','
+        )}`
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get('http://localhost:8083/deals/closed')
+      const response = await axios.get(query)
       const deals = await response.data
       setDeals(deals)
     }
     fetchData()
-  }, [])
+  }, [query])
 
   const getUniqueDates = (deals) => {
     const uniqueDates = []

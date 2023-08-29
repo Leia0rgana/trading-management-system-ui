@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import DealName from './DealName'
+import DealList from './DealList'
 import axios from 'axios'
 import styles from './DealNamesList.module.css'
 import Button from 'react-bootstrap/Button'
 
 function DealNamesList() {
   const [names, setNames] = useState([])
+  // eslint-disable-next-line no-unused-vars
   const [selectedNames, setSelectedNames] = useState([])
-  const [selectedButtons, setSelectedButtons] = useState([])
+  const [buttonStyle, setButtonStyle] = useState('light')
 
   useEffect(() => {
     async function fetchData() {
@@ -20,39 +22,34 @@ function DealNamesList() {
 
   const selectedNamesHandler = (selectedName) => {
     if (selectedNames.includes(selectedName)) {
-      const updatedSelectedNames = selectedNames.filter(
-        (newItem) => newItem !== selectedName
-      )
-      setSelectedNames(updatedSelectedNames)
+      const indexToDelete = selectedNames.indexOf(selectedName)
+      indexToDelete > -1 && selectedNames.splice(indexToDelete, 1)
     } else {
-      setSelectedNames([...selectedNames, selectedName])
+      selectedNames.push(selectedName)
     }
   }
 
-  const getSelectedButtonsIndexes = (index) => {
-    selectedButtons.includes(index)
-      ? setSelectedButtons(
-          selectedButtons.filter((btnIndex) => btnIndex !== index)
-        )
-      : setSelectedButtons([...selectedButtons, index])
-  }
-
   return (
-    <div className={styles.namesList}>
-      {names.map((name, index) => (
-        <Button
-          key={index}
-          className={styles.button}
-          variant={selectedButtons.includes(index) ? 'success' : 'light'}
-          onClick={() => {
-            getSelectedButtonsIndexes(index)
-            selectedNamesHandler(name.futureName)
-          }}
-        >
-          <DealName key={index} name={name.futureName} />
-        </Button>
-      ))}
-    </div>
+    <>
+      <div className={styles.namesList}>
+        {names.map((name) => (
+          <Button
+            key={name.futureName}
+            className={styles.button}
+            variant={
+              selectedNames.includes(name.futureName) ? 'success' : 'light'
+            }
+            onClick={() => {
+              setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
+              selectedNamesHandler(name.futureName)
+            }}
+          >
+            <DealName key={name.futureName} name={name.futureName} />
+          </Button>
+        ))}
+      </div>
+      <DealList selectedNames={selectedNames} />
+    </>
   )
 }
 
