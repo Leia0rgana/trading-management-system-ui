@@ -9,13 +9,13 @@ class DealsByDate {
   }
 }
 
-function DealList({ selectedNames }) {
+function DealList({ clickedDealNames }) {
   const [deals, setDeals] = useState([])
 
   const query =
-    selectedNames.length === 0
+    clickedDealNames.length === 0
       ? 'http://localhost:8083/deals/closed'
-      : `http://localhost:8083/deals/closed?futureNames=${selectedNames.join(
+      : `http://localhost:8083/deals/closed?futureNames=${clickedDealNames.join(
           ','
         )}`
 
