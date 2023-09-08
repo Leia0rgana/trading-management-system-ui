@@ -4,16 +4,19 @@ import DealList from './components/Deals/DealList'
 import { useState } from 'react'
 
 function App() {
-  const [clickedDealNames] = useState([])
+  const [clickedDealNames, setClickedDealNames] = useState([])
   const [buttonStyle, setButtonStyle] = useState('light')
 
   const handleClick = (clickedDealName) => {
-    if (clickedDealNames.includes(clickedDealName)) {
-      const indexToDelete = clickedDealNames.indexOf(clickedDealName)
-      indexToDelete > -1 && clickedDealNames.splice(indexToDelete, 1)
+    const newClickedDealNames = [...clickedDealNames]
+
+    if (newClickedDealNames.includes(clickedDealName)) {
+      const indexToDelete = newClickedDealNames.indexOf(clickedDealName)
+      indexToDelete > -1 && newClickedDealNames.splice(indexToDelete, 1)
     } else {
-      clickedDealNames.push(clickedDealName)
+      newClickedDealNames.push(clickedDealName)
     }
+    setClickedDealNames(newClickedDealNames)
     setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
   }
 
