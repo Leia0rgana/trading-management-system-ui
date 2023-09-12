@@ -9,15 +9,16 @@ class DealsByDate {
   }
 }
 
+const closedDealsURL = `http://localhost:8083/deals/closed`
+const closedDealsWithFutureNamesURL = `http://localhost:8083/deals/closed?futureNames=`
+
 function DealList({ clickedDealNames }) {
   const [deals, setDeals] = useState([])
 
   const query =
     clickedDealNames.length === 0
-      ? 'http://localhost:8083/deals/closed'
-      : `http://localhost:8083/deals/closed?futureNames=${clickedDealNames.join(
-          ','
-        )}`
+      ? closedDealsURL
+      : `${closedDealsWithFutureNamesURL}${clickedDealNames.join(',')}`
 
   useEffect(() => {
     async function fetchData() {
