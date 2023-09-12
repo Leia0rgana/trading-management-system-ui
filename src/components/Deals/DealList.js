@@ -9,16 +9,15 @@ class DealsByDate {
   }
 }
 
-const closedDealsURL = `http://localhost:8083/deals/closed`
-const closedDealsWithFutureNamesURL = `http://localhost:8083/deals/closed?futureNames=`
+export const baseURL = `http://localhost:8083/`
 
-function DealList({ clickedDealNames }) {
+export default function DealList({ clickedDealNames }) {
   const [deals, setDeals] = useState([])
 
   const query =
     clickedDealNames.length === 0
-      ? closedDealsURL
-      : `${closedDealsWithFutureNamesURL}${clickedDealNames.join(',')}`
+      ? `${baseURL}deals/closed`
+      : `${baseURL}deals/closed?futureNames=${clickedDealNames.join(',')}`
 
   useEffect(() => {
     async function fetchData() {
@@ -110,5 +109,3 @@ function DealList({ clickedDealNames }) {
     </>
   )
 }
-
-export default DealList
