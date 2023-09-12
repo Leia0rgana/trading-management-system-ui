@@ -1,9 +1,10 @@
 import './App.css'
 import DealNamesList from './components/Deals/DealNamesList'
 import DealList from './components/Deals/DealList'
+import OpenedDealList from './components/Deals/OpenedDealList'
 import { useState } from 'react'
 
-function App() {
+export default function App() {
   const [clickedDealNames, setClickedDealNames] = useState([])
   const [buttonStyle, setButtonStyle] = useState('light')
 
@@ -28,8 +29,7 @@ function App() {
         onNameClick={handleClick}
       />
       <DealList clickedDealNames={clickedDealNames} />
+      <OpenedDealList />
     </div>
   )
 }
-
-export default App
