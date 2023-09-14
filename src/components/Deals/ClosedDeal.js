@@ -18,7 +18,7 @@ export default function ClosedDeal({
     dateTime: closedDateTime,
     price: closedPrice,
     sum: closedSum,
-  } = closedDeal || {}
+  } = closedDeal
 
   return (
     <Accordion>
@@ -29,26 +29,25 @@ export default function ClosedDeal({
               <div className={styles.dealName}>{name}</div>
               <div className={styles.dealTicker}>{ticker}</div>
             </div>
-            {profit !== undefined && (
-              <div className={styles.cell}>
-                <div
-                  className={`${styles.dealProfit} ${
-                    profit === '0'
-                      ? ' '
-                      : profit < 0
-                      ? styles.negativeProfit
-                      : styles.positiveProfit
-                  }`}
-                >
-                  {profit > 0 ? `+` : ``}
-                  {profit.replace('.', ',')} {'\u20bd'}
-                </div>
-                <div className={styles.dealProfitInPercent}>
-                  {profit > 0 ? `+` : ``}
-                  {profitInPercent.replace('.', ',')} %
-                </div>
+
+            <div className={styles.cell}>
+              <div
+                className={`${styles.dealProfit} ${
+                  profit === '0'
+                    ? ' '
+                    : profit < 0
+                    ? styles.negativeProfit
+                    : styles.positiveProfit
+                }`}
+              >
+                {profit > 0 ? `+` : ``}
+                {profit.replace('.', ',')} {'\u20bd'}
               </div>
-            )}
+              <div className={styles.dealProfitInPercent}>
+                {profit > 0 ? `+` : ``}
+                {profitInPercent.replace('.', ',')} %
+              </div>
+            </div>
           </div>
         </Accordion.Header>
         <Accordion.Body>
@@ -75,18 +74,14 @@ export default function ClosedDeal({
                 по цене {price.replace('.', ',')} пт. на сумму{' '}
                 {sum.replace('.', ',')} {'\u20bd'}
               </p>
-              {closedDeal !== undefined && (
-                <p>
-                  Сделка закрыта по цене {closedPrice.replace('.', ',')} пт. на
-                  сумму {closedSum.replace('.', ',')} {'\u20bd'}
-                </p>
-              )}
+              <p>
+                Сделка закрыта по цене {closedPrice.replace('.', ',')} пт. на
+                сумму {closedSum.replace('.', ',')} {'\u20bd'}
+              </p>
             </div>
             <div className={`${styles.cell} ${styles.time}`}>
               <p>{dateTime.slice(dateTime.indexOf('T') + 1)}</p>
-              {closedDeal !== undefined && (
-                <p>{closedDateTime.slice(closedDateTime.indexOf('T') + 1)}</p>
-              )}
+              <p>{closedDateTime.slice(closedDateTime.indexOf('T') + 1)}</p>
             </div>
           </div>
         </Accordion.Body>
