@@ -1,0 +1,13 @@
+.deals {
+  display: flex;
+}
+
+.closedDeals {
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
+}
+
+.openedDeals {
+  width: 30%;
+}

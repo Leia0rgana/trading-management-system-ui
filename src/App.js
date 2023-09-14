@@ -1,12 +1,25 @@
 import './App.css'
+import styles from './components/Deals/App.module.css'
 import DealNamesList from './components/Deals/DealNamesList'
 import DealList from './components/Deals/DealList'
 import OpenedDealList from './components/Deals/OpenedDealList'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { baseURL } from './components/Deals/DealList'
 
 export default function App() {
   const [clickedDealNames, setClickedDealNames] = useState([])
   const [buttonStyle, setButtonStyle] = useState('light')
+  const [openedDeals, setOpenedDeals] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(`${baseURL}deals/open`)
+      const deals = await response.data
+      setOpenedDeals(deals)
+    }
+    fetchData()
+  }, [])
 
   const handleClick = (clickedDealName) => {
     const newClickedDealNames = [...clickedDealNames]
@@ -28,8 +41,21 @@ export default function App() {
         clickedDealNames={clickedDealNames}
         onNameClick={handleClick}
       />
-      <DealList clickedDealNames={clickedDealNames} />
-      <OpenedDealList />
+      {openedDeals.length !== 0 ? (
+        <div className={styles.deals}>
+          <div className={styles.closedDeals}>
+            <DealList clickedDealNames={clickedDealNames} />
+          </div>
+          <div className={styles.openedDeals}>
+            <h3>Открытые сделки</h3>
+            <OpenedDealList openedDeals={openedDeals} />
+          </div>
+        </div>
+      ) : (
+        <div className={styles.closedDeals}>
+          <DealList clickedDealNames={clickedDealNames} />
+        </div>
+      )}
     </div>
   )
 }

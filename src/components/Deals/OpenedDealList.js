@@ -1,32 +1,18 @@
-import { useState, useEffect } from 'react'
-import Deal from './Deal'
-import axios from 'axios'
-import { baseURL } from './DealList'
+import OpenedDeal from './OpenedDeal'
 
-export default function OpenedDealList() {
-  const [openedDeals, setOpenedDeals] = useState([])
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(`${baseURL}deals/open`)
-      const deals = await response.data
-      setOpenedDeals(deals)
-    }
-    fetchData()
-  }, [])
-
+export default function OpenedDealList({ openedDeals }) {
   return (
     <>
-      {openedDeals.map((deal) => (
-        <Deal
-          key={deal.id}
-          name={deal.name}
-          ticker={deal.ticker}
-          sum={deal.sum}
-          price={deal.price}
-          orderDirection={deal.orderDirection}
-          dateTime={deal.dateTime}
-          quantity={deal.quantity}
+      {openedDeals.map((openedDeal) => (
+        <OpenedDeal
+          key={openedDeal.id}
+          name={openedDeal.name}
+          ticker={openedDeal.ticker}
+          sum={openedDeal.sum}
+          price={openedDeal.price}
+          orderDirection={openedDeal.orderDirection}
+          dateTime={openedDeal.dateTime}
+          quantity={openedDeal.quantity}
         />
       ))}
     </>
