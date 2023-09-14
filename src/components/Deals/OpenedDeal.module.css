@@ -1,0 +1,36 @@
+.dealName {
+  color: #000000;
+  font-weight: 600;
+}
+
+.dealTicker {
+  font-size: 14px;
+  color: #1e2f29ca;
+  padding-top: 5px;
+}
+
+.info {
+  font-size: 14px;
+  padding-top: 10px;
+  color: #1e2f29ca;
+}
+
+.content {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px 20px;
+  overflow: auto;
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.cell {
+  padding: 0 5px;
+}
