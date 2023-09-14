@@ -1,8 +1,8 @@
-import styles from './Deal.module.css'
+import styles from './ClosedDeal.module.css'
 import { Accordion } from 'react-bootstrap'
 import { LuArrowUp, LuArrowDown } from 'react-icons/lu'
 
-export default function Deal({
+export default function ClosedDeal({
   name,
   ticker,
   profit,

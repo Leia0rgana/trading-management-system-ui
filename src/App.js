@@ -1,11 +1,11 @@
 import './App.css'
 import styles from './components/Deals/App.module.css'
 import DealNamesList from './components/Deals/DealNamesList'
-import DealList from './components/Deals/DealList'
+import ClosedDealList from './components/Deals/ClosedDealList'
 import OpenedDealList from './components/Deals/OpenedDealList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { baseURL } from './components/Deals/DealList'
+import { baseURL } from './components/Deals/ClosedDealList'
 
 export default function App() {
   const [clickedDealNames, setClickedDealNames] = useState([])
@@ -44,7 +44,7 @@ export default function App() {
       {openedDeals.length !== 0 ? (
         <div className={styles.deals}>
           <div className={styles.closedDeals}>
-            <DealList clickedDealNames={clickedDealNames} />
+            <ClosedDealList clickedDealNames={clickedDealNames} />
           </div>
           <div className={styles.openedDeals}>
             <h3>Открытые сделки</h3>
@@ -53,7 +53,7 @@ export default function App() {
         </div>
       ) : (
         <div className={styles.closedDeals}>
-          <DealList clickedDealNames={clickedDealNames} />
+          <ClosedDealList clickedDealNames={clickedDealNames} />
         </div>
       )}
     </div>

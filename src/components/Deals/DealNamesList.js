@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './DealNamesList.module.css'
 import Button from 'react-bootstrap/Button'
-import { baseURL } from './DealList'
+import { baseURL } from './ClosedDealList'
 
 function DealName({ name }) {
   return <>{name}</>

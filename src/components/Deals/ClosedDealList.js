@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Deal from './Deal'
+import ClosedDeal from './ClosedDeal'
 import axios from 'axios'
 
 class DealsByDate {
@@ -68,7 +68,7 @@ export default function DealList({ clickedDealNames }) {
             <div key={item.date}>
               <h3>{item.date}</h3>
               {item.deals.map((deal) => (
-                <Deal
+                <ClosedDeal
                   key={deal.id}
                   name={deal.name}
                   ticker={deal.ticker}
@@ -88,7 +88,7 @@ export default function DealList({ clickedDealNames }) {
           return (
             <div key={item.date}>
               {item.deals.map((deal) => (
-                <Deal
+                <ClosedDeal
                   key={deal.id}
                   name={deal.name}
                   ticker={deal.ticker}
