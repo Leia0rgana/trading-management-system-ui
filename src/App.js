@@ -46,7 +46,7 @@ export default function App() {
           <div className={styles.closedDeals}>
             <ClosedDealList clickedDealNames={clickedDealNames} />
           </div>
-          <div className={styles.openedDeals}>
+          <div>
             <h3>Открытые сделки</h3>
             <OpenedDealList openedDeals={openedDeals} />
           </div>

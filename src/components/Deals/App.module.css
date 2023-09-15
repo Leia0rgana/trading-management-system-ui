@@ -1,13 +1,11 @@
 .deals {
   display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
 }
 
 .closedDeals {
   margin-left: auto;
   margin-right: auto;
-  width: 65%;
-}
-
-.openedDeals {
-  width: 30%;
+  width: 70%;
 }

@@ -33,11 +33,9 @@ export default function OpenedDeal({
       </div>
       <div className={`${styles.row} ${styles.info}`}>
         <div className={styles.cell}>
-          Количество: {quantity} шт.
+          Кол-во: {quantity} шт.
           <br />
-          Цена: {price} пт.
-        </div>
-        <div className={styles.cell}>
+          Цена: {price} пт. <br />
           Сумма: {sum} {'\u20bd'}
           <br />
           Время: {dateTime.slice(dateTime.indexOf('T') + 1)}
