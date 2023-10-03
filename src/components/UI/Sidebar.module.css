@@ -1,6 +1,7 @@
 .sidebar {
   height: 100%;
-  background-color: rgb(234, 158, 227);
+  background-color: #d3d4d55c;
+  border-radius: 20px;
 }
 
 .sidebarList {
@@ -21,7 +22,8 @@
 
 .row:hover {
   cursor: pointer;
-  background-color: rgb(207, 124, 203);
+  background-color: #157347;
+  color: white;
 }
 
 .icon {
@@ -35,5 +37,12 @@
 }
 
 .active {
-  background-color: rgb(207, 124, 203);
+  background-color: #157347;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    display: none;
+  }
 }

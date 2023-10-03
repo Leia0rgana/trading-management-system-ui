@@ -7,6 +7,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { baseURL } from './components/Deals/ClosedDealList'
 import Sidebar from './components/UI/Sidebar'
+import { AiOutlineMenu } from 'react-icons/ai'
+import { IconContext } from 'react-icons'
+import { Button } from 'react-bootstrap'
 
 export default function App() {
   const [clickedDealNames, setClickedDealNames] = useState([])
@@ -36,12 +39,20 @@ export default function App() {
     setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
   }
 
-  const toggleSidebar = () => {}
-
   return (
-    <div className="App">
-      <Sidebar />
-      <div className="mainContent">
+    <div className={`App ${sidebarExpanded ? 'sidebar-expanded' : ''}`}>
+      <div>
+        <IconContext.Provider value={{ color: '#212529', size: '1.5rem' }}>
+          <Button
+            variant="custom"
+            onClick={() => setSidebarExpanded(!sidebarExpanded)}
+          >
+            <AiOutlineMenu />
+          </Button>
+        </IconContext.Provider>
+        <Sidebar sidebarExpanded={sidebarExpanded} />
+      </div>
+      <div className="main-content">
         <h1>Фьючерсы</h1>
         <DealNamesList
           clickedDealNames={clickedDealNames}

@@ -1,13 +1,21 @@
 .App {
-  display: grid;
-  grid-template-columns: 10% auto; /*Добавить это свойство только когда сайдбар открыт*/
+  /* display: grid;
+  grid-template-columns: 10% auto; */
 }
 
-.mainContent {
+.sidebar-expanded {
+  display: grid;
+  grid-template-columns: 10% auto;
+}
+
+.main-content {
   text-align: center;
   width: 80%;
   margin: 0 auto;
 }
+/* .btn-custom {
+  border-radius: 2rem;
+} */
 
 h1 {
   text-align: left;
