@@ -1,5 +1,5 @@
 import './App.css'
-import styles from './components/Deals/App.module.css'
+import styles from './App.module.css'
 import DealNamesList from './components/Deals/DealNamesList'
 import ClosedDealList from './components/Deals/ClosedDealList'
 import OpenedDealList from './components/Deals/OpenedDealList'
