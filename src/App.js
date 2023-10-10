@@ -40,8 +40,9 @@ export default function App() {
   }
 
   return (
-    <div className={`App ${sidebarExpanded ? 'sidebar-expanded' : ''}`}>
+    <div className="App">
       <div>
+        {/* z-index*/}
         <IconContext.Provider value={{ color: '#212529', size: '1.5rem' }}>
           <Button
             variant="custom"
@@ -52,7 +53,7 @@ export default function App() {
         </IconContext.Provider>
         <Sidebar sidebarExpanded={sidebarExpanded} />
       </div>
-      <div className="main-content">
+      <div className={styles.mainContent}>
         <h1>Фьючерсы</h1>
         <DealNamesList
           clickedDealNames={clickedDealNames}
