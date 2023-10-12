@@ -1,0 +1,15 @@
+.accordion-button h3 {
+  flex: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #c1ddc9a1;
+  color: #212529;
+}
+
+.accordion-button:focus {
+  border-color: #c1ddc9a1;
+  box-shadow: none;
+}

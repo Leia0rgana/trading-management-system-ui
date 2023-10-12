@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import ClosedDeal from './ClosedDeal'
+import './ClosedDealList.css'
 import axios from 'axios'
+import { Accordion } from 'react-bootstrap'
 
 class DealsByDate {
   constructor(date, deals) {
@@ -11,7 +13,7 @@ class DealsByDate {
 
 export const baseURL = `http://localhost:8083/`
 
-export default function DealList({ clickedDealNames }) {
+export default function ClosedDealDealList({ clickedDealNames }) {
   const [deals, setDeals] = useState([])
 
   const query =
@@ -61,27 +63,36 @@ export default function DealList({ clickedDealNames }) {
 
   return (
     <>
-      {getDealsByDates(getUniqueDates(deals)).map((item) => {
+      {getDealsByDates(getUniqueDates(deals)).map((item, index) => {
         if (item.date !== currentDate) {
+          const defaultActiveKey = index === 0 ? '0' : null
           currentDate = item.date
           return (
             <div key={item.date}>
-              <h3>{item.date}</h3>
-              {item.deals.map((deal) => (
-                <ClosedDeal
-                  key={deal.id}
-                  name={deal.name}
-                  ticker={deal.ticker}
-                  profit={deal.profit}
-                  profitInPercent={deal.profitInPercents}
-                  sum={deal.sum}
-                  price={deal.price}
-                  orderDirection={deal.orderDirection}
-                  dateTime={deal.dateTime}
-                  quantity={deal.quantity}
-                  closedDeal={deal.closedDeal}
-                />
-              ))}
+              <Accordion defaultActiveKey={defaultActiveKey}>
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header bsPrefix="custom-class">
+                    <h3>{item.date}</h3>
+                  </Accordion.Header>
+                  <Accordion.Body>
+                    {item.deals.map((deal) => (
+                      <ClosedDeal
+                        key={deal.id}
+                        name={deal.name}
+                        ticker={deal.ticker}
+                        profit={deal.profit}
+                        profitInPercent={deal.profitInPercents}
+                        sum={deal.sum}
+                        price={deal.price}
+                        orderDirection={deal.orderDirection}
+                        dateTime={deal.dateTime}
+                        quantity={deal.quantity}
+                        closedDeal={deal.closedDeal}
+                      />
+                    ))}
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
             </div>
           )
         } else {
