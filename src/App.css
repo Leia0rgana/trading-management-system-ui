@@ -1,21 +1,3 @@
-/*.App {
-  text-align: center;
-  max-width: 70%;
-  margin: 0 auto;
-}
-
-h1 {
-  text-align: left;
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  margin-top: 24px;
-}
-
-h3 {
-  margin: 20px 0;
-}
-*/
-
 .App {
   display: flex;
 }
