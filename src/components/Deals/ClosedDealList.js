@@ -13,7 +13,7 @@ class DealsByDate {
 
 export const baseURL = `http://localhost:8083/`
 
-export default function ClosedDealDealList({ clickedDealNames }) {
+export default function ClosedDealList({ clickedDealNames }) {
   const [deals, setDeals] = useState([])
 
   const query =
@@ -71,7 +71,7 @@ export default function ClosedDealDealList({ clickedDealNames }) {
             <div key={item.date}>
               <Accordion defaultActiveKey={defaultActiveKey}>
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header bsPrefix="custom-class">
+                  <Accordion.Header>
                     <h3>{item.date}</h3>
                   </Accordion.Header>
                   <Accordion.Body>
