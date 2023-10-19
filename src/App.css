@@ -1,5 +1,11 @@
 .App {
   display: flex;
+  align-items: flex-start;
+}
+.main-content {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 h1 {

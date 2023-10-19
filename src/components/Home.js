@@ -5,16 +5,11 @@ import OpenedDealList from './Deals/OpenedDealList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { baseURL } from './Deals/ClosedDealList'
-import Sidebar from './UI/Sidebar'
-import { AiOutlineMenu } from 'react-icons/ai'
-import { IconContext } from 'react-icons'
-import { Button } from 'react-bootstrap'
 
 export default function Home() {
   const [clickedDealNames, setClickedDealNames] = useState([])
   const [buttonStyle, setButtonStyle] = useState('light')
   const [openedDeals, setOpenedDeals] = useState([])
-  const [sidebarExpanded, setSidebarExpanded] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -39,41 +34,27 @@ export default function Home() {
   }
 
   return (
-    <>
-      <div>
-        {/* z-index*/}
-        <IconContext.Provider value={{ color: '#212529', size: '1.5rem' }}>
-          <Button
-            variant="custom"
-            onClick={() => setSidebarExpanded(!sidebarExpanded)}
-          >
-            <AiOutlineMenu />
-          </Button>
-        </IconContext.Provider>
-        <Sidebar sidebarExpanded={sidebarExpanded} />
-      </div>
-      <div className={styles.mainContent}>
-        <h1>Фьючерсы</h1>
-        <DealNamesList
-          clickedDealNames={clickedDealNames}
-          onNameClick={handleClick}
-        />
-        {openedDeals.length !== 0 ? (
-          <div className={styles.deals}>
-            <div className={styles.closedDeals}>
-              <ClosedDealList clickedDealNames={clickedDealNames} />
-            </div>
-            <div>
-              <h3>Открытые сделки</h3>
-              <OpenedDealList openedDeals={openedDeals} />
-            </div>
-          </div>
-        ) : (
+    <div className="main-content">
+      <h1>Фьючерсы</h1>
+      <DealNamesList
+        clickedDealNames={clickedDealNames}
+        onNameClick={handleClick}
+      />
+      {openedDeals.length !== 0 ? (
+        <div className={styles.deals}>
           <div className={styles.closedDeals}>
             <ClosedDealList clickedDealNames={clickedDealNames} />
           </div>
-        )}
-      </div>
-    </>
+          <div>
+            <h3>Открытые сделки</h3>
+            <OpenedDealList openedDeals={openedDeals} />
+          </div>
+        </div>
+      ) : (
+        <div className={styles.closedDeals}>
+          <ClosedDealList clickedDealNames={clickedDealNames} />
+        </div>
+      )}
+    </div>
   )
 }
