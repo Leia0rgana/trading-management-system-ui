@@ -1,30 +1,26 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './Sidebar.module.css'
-import { BiArchive } from 'react-icons/bi'
+import { BiArchive, BiHomeAlt2, BiLinkExternal } from 'react-icons/bi'
 
 const sidebarData = [
+  {
+    title: 'Главная',
+    icon: <BiHomeAlt2 />,
+    link: '',
+  },
   {
     title: 'Архив сделок',
     icon: <BiArchive />,
     link: 'archive',
   },
   {
-    title: 'Домой',
-    icon: <BiArchive />,
-    link: '',
-  },
-  {
     title: 'Контакты',
-    icon: <BiArchive />,
+    icon: <BiLinkExternal />,
     link: 'contacts',
   },
 ]
 
-export default function Sidebar({
-  sidebarExpanded,
-  onSidebarItemSelect,
-  selectedSidebarItem,
-}) {
+export default function Sidebar({ sidebarExpanded, onSidebarItemSelect }) {
   return (
     <>
       {sidebarExpanded && (
@@ -32,17 +28,15 @@ export default function Sidebar({
           <ul className={styles.sidebarList}>
             {sidebarData.map((item, key) => {
               return (
-                <Link
+                <NavLink
                   to={item.link}
                   key={key}
-                  className={`${styles.row} ${
-                    `/${item.link}` === selectedSidebarItem && styles.active
-                  }`}
-                  onClick={() => onSidebarItemSelect(`/${item.link}`)}
+                  className={styles.row}
+                  onClick={() => onSidebarItemSelect(`/${item.link}`)} //when visit another page sidebar will close
                 >
                   <div className={styles.icon}>{item.icon}</div>
                   <div className={styles.title}>{item.title} </div>
-                </Link>
+                </NavLink>
               )
             })}
           </ul>

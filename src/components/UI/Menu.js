@@ -7,14 +7,6 @@ import { Button } from 'react-bootstrap'
 
 export default function Menu() {
   const [sidebarExpanded, setSidebarExpanded] = useState(false)
-  const [selectedSidebarItem, setSelectedSidebarItem] = useState(
-    window.location.pathname
-  )
-
-  const handleClick = (selectedItem) => {
-    setSelectedSidebarItem(selectedItem)
-    setSidebarExpanded(false)
-  }
 
   return (
     <div className={styles.menu}>
@@ -28,8 +20,7 @@ export default function Menu() {
       </IconContext.Provider>
       <Sidebar
         sidebarExpanded={sidebarExpanded}
-        onSidebarItemSelect={handleClick}
-        selectedSidebarItem={selectedSidebarItem}
+        onSidebarItemSelect={() => setSidebarExpanded(false)}
       />
     </div>
   )
