@@ -8,6 +8,11 @@
   margin: 0 auto;
 }
 
+.active {
+  background-color: #157347;
+  color: white !important;
+}
+
 h1 {
   text-align: left;
   font-size: 2.2rem;
