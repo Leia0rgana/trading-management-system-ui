@@ -23,25 +23,27 @@ const sidebarData = [
 export default function Sidebar({ sidebarExpanded, onSidebarItemSelect }) {
   return (
     <>
-      {sidebarExpanded && (
-        <div className={styles.sidebar}>
-          <ul className={styles.sidebarList}>
-            {sidebarData.map((item, key) => {
-              return (
-                <NavLink
-                  to={item.link}
-                  key={key}
-                  className={styles.row}
-                  onClick={() => onSidebarItemSelect(`/${item.link}`)} //when visit another page sidebar will close
-                >
-                  <div className={styles.icon}>{item.icon}</div>
-                  <div className={styles.title}>{item.title} </div>
-                </NavLink>
-              )
-            })}
-          </ul>
-        </div>
-      )}
+      <div
+        className={`${styles.sidebar} ${
+          sidebarExpanded ? styles.expanded : styles.closed
+        }`}
+      >
+        <ul className={styles.sidebarList}>
+          {sidebarData.map((item, key) => {
+            return (
+              <NavLink
+                to={item.link}
+                key={key}
+                className={styles.row}
+                onClick={() => onSidebarItemSelect(`/${item.link}`)} //when visit another page sidebar will close
+              >
+                <div className={styles.icon}>{item.icon}</div>
+                <div className={styles.title}>{item.title} </div>
+              </NavLink>
+            )
+          })}
+        </ul>
+      </div>
     </>
   )
 }
