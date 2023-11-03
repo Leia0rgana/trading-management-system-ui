@@ -5,11 +5,14 @@ import OpenedDealList from './Deals/OpenedDealList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { baseURL } from './Deals/ClosedDealList'
+import { useSearchParams } from 'react-router-dom'
 
 export default function Home() {
-  const [clickedDealNames, setClickedDealNames] = useState([])
   const [buttonStyle, setButtonStyle] = useState('light')
   const [openedDeals, setOpenedDeals] = useState([])
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const futureNamesFromURL = searchParams.getAll('futureNames') || ''
 
   useEffect(() => {
     async function fetchData() {
@@ -21,29 +24,28 @@ export default function Home() {
   }, [])
 
   const handleClick = (clickedDealName) => {
-    const newClickedDealNames = [...clickedDealNames]
-
-    if (newClickedDealNames.includes(clickedDealName)) {
-      const indexToDelete = newClickedDealNames.indexOf(clickedDealName)
-      indexToDelete > -1 && newClickedDealNames.splice(indexToDelete, 1)
+    if (futureNamesFromURL.includes(clickedDealName)) {
+      const indexToDelete = futureNamesFromURL.indexOf(clickedDealName)
+      indexToDelete > -1 && futureNamesFromURL.splice(indexToDelete, 1)
     } else {
-      newClickedDealNames.push(clickedDealName)
+      futureNamesFromURL.push(clickedDealName)
     }
-    setClickedDealNames(newClickedDealNames)
+
     setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
+    setSearchParams({ futureNames: futureNamesFromURL })
   }
 
   return (
     <div className="main-content">
       <h1>Фьючерсы</h1>
       <DealNamesList
-        clickedDealNames={clickedDealNames}
+        clickedDealNames={futureNamesFromURL}
         onNameClick={handleClick}
       />
       {openedDeals.length !== 0 ? (
         <div className={styles.deals}>
           <div className={styles.closedDeals}>
-            <ClosedDealList clickedDealNames={clickedDealNames} />
+            <ClosedDealList clickedDealNames={futureNamesFromURL} />
           </div>
           <div>
             <h3>Открытые сделки</h3>
@@ -52,7 +54,7 @@ export default function Home() {
         </div>
       ) : (
         <div className={styles.closedDeals}>
-          <ClosedDealList clickedDealNames={clickedDealNames} />
+          <ClosedDealList clickedDealNames={futureNamesFromURL} />
         </div>
       )}
     </div>

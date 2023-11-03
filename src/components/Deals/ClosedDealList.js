@@ -22,13 +22,14 @@ export default function ClosedDealList({ clickedDealNames }) {
       : `${baseURL}deals/closed?futureNames=${clickedDealNames.join(',')}`
 
   useEffect(() => {
+    //будет обычный запрос по ссылке "...deals/closed"
     async function fetchData() {
       const response = await axios.get(query)
       const deals = await response.data
       setDeals(deals)
     }
     fetchData()
-  }, [query])
+  }, [query]) //пустой массив
 
   const getUniqueDates = (deals) => {
     const uniqueDates = []
@@ -60,6 +61,33 @@ export default function ClosedDealList({ clickedDealNames }) {
   }
 
   let currentDate = null
+
+  // const filterDeals = (dealList) => {
+  //   let dealListCopy = dealList
+
+  //   if (clickedDealNames.length !== 0) {
+  //     dealListCopy = dealList.filter((deal) => {
+  //       return clickedDealNames.includes(deal.name)
+  //     })
+  //   }
+
+  //   dealListCopy.map((deal) => {
+  //     return (
+  //       <ClosedDeal
+  //         key={deal.id}
+  //         name={deal.name}
+  //         ticker={deal.ticker}
+  //         profit={deal.profit}
+  //         profitInPercent={deal.profitInPercents}
+  //         sum={deal.sum}
+  //         price={deal.price}
+  //         orderDirection={deal.orderDirection}
+  //         dateTime={deal.dateTime}
+  //         quantity={deal.quantity}
+  //         closedDeal={deal.closedDeal}
+  //       />
+  //     )
+  //   })}
 
   return (
     <>
