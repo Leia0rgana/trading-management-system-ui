@@ -16,20 +16,14 @@ export const baseURL = `http://localhost:8083/`
 export default function ClosedDealList({ clickedDealNames }) {
   const [deals, setDeals] = useState([])
 
-  const query =
-    clickedDealNames.length === 0
-      ? `${baseURL}deals/closed`
-      : `${baseURL}deals/closed?futureNames=${clickedDealNames.join(',')}`
-
   useEffect(() => {
-    //будет обычный запрос по ссылке "...deals/closed"
     async function fetchData() {
-      const response = await axios.get(query)
+      const response = await axios.get(`${baseURL}deals/closed`)
       const deals = await response.data
       setDeals(deals)
     }
     fetchData()
-  }, [query]) //пустой массив
+  }, [])
 
   const getUniqueDates = (deals) => {
     const uniqueDates = []
@@ -60,89 +54,61 @@ export default function ClosedDealList({ clickedDealNames }) {
     return dealsByDates
   }
 
+  const filterClosedDeals = (dealList) => {
+    let dealListCopy = dealList
+
+    if (clickedDealNames.length !== 0) {
+      dealListCopy = dealList.filter((deal) => {
+        return clickedDealNames.includes(deal.name)
+      })
+    }
+    return getClosedDeals(dealListCopy)
+  }
+
+  const getClosedDeals = (dealList) => {
+    return dealList.map((deal) => (
+      <ClosedDeal
+        key={deal.id}
+        name={deal.name}
+        ticker={deal.ticker}
+        profit={deal.profit}
+        profitInPercent={deal.profitInPercents}
+        sum={deal.sum}
+        price={deal.price}
+        orderDirection={deal.orderDirection}
+        dateTime={deal.dateTime}
+        quantity={deal.quantity}
+        closedDeal={deal.closedDeal}
+      />
+    ))
+  }
+
   let currentDate = null
-
-  // const filterDeals = (dealList) => {
-  //   let dealListCopy = dealList
-
-  //   if (clickedDealNames.length !== 0) {
-  //     dealListCopy = dealList.filter((deal) => {
-  //       return clickedDealNames.includes(deal.name)
-  //     })
-  //   }
-
-  //   dealListCopy.map((deal) => {
-  //     return (
-  //       <ClosedDeal
-  //         key={deal.id}
-  //         name={deal.name}
-  //         ticker={deal.ticker}
-  //         profit={deal.profit}
-  //         profitInPercent={deal.profitInPercents}
-  //         sum={deal.sum}
-  //         price={deal.price}
-  //         orderDirection={deal.orderDirection}
-  //         dateTime={deal.dateTime}
-  //         quantity={deal.quantity}
-  //         closedDeal={deal.closedDeal}
-  //       />
-  //     )
-  //   })}
-
   return (
     <>
       {getDealsByDates(getUniqueDates(deals)).map((item, index) => {
         if (item.date !== currentDate) {
-          const defaultActiveKey = index === 0 ? '0' : null
           currentDate = item.date
           return (
             <div key={item.date}>
-              <Accordion defaultActiveKey={defaultActiveKey}>
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>
-                    <h3>{item.date}</h3>
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    {item.deals.map((deal) => (
-                      <ClosedDeal
-                        key={deal.id}
-                        name={deal.name}
-                        ticker={deal.ticker}
-                        profit={deal.profit}
-                        profitInPercent={deal.profitInPercents}
-                        sum={deal.sum}
-                        price={deal.price}
-                        orderDirection={deal.orderDirection}
-                        dateTime={deal.dateTime}
-                        quantity={deal.quantity}
-                        closedDeal={deal.closedDeal}
-                      />
-                    ))}
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
+              {filterClosedDeals(item.deals).length === 0 ? (
+                ''
+              ) : (
+                <Accordion defaultActiveKey={index === 0 ? '0' : null}>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>
+                      <h3>{item.date}</h3>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      {filterClosedDeals(item.deals)}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              )}
             </div>
           )
         } else {
-          return (
-            <div key={item.date}>
-              {item.deals.map((deal) => (
-                <ClosedDeal
-                  key={deal.id}
-                  name={deal.name}
-                  ticker={deal.ticker}
-                  profit={deal.profit}
-                  profitInPercent={deal.profitInPercents}
-                  sum={deal.sum}
-                  price={deal.price}
-                  orderDirection={deal.orderDirection}
-                  dateTime={deal.dateTime}
-                  quantity={deal.quantity}
-                  closedDeal={deal.closedDeal}
-                />
-              ))}
-            </div>
-          )
+          return <div key={item.date}>{filterClosedDeals(item.deals)}</div>
         }
       })}
     </>
