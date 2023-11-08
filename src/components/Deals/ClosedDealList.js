@@ -11,6 +11,8 @@ class DealsByDate {
   }
 }
 
+const weekInMilliseconds = 7 * 24 * 60 * 60 * 1000
+
 export const baseURL = `http://localhost:8083/`
 
 export default function ClosedDealList({ clickedDealNames }) {
@@ -86,31 +88,34 @@ export default function ClosedDealList({ clickedDealNames }) {
   let currentDate = null
   return (
     <>
-      {getDealsByDates(getUniqueDates(deals)).map((item, index) => {
-        if (item.date !== currentDate) {
-          currentDate = item.date
-          return (
-            <div key={item.date}>
-              {filterClosedDeals(item.deals).length === 0 ? (
-                ''
-              ) : (
-                <Accordion defaultActiveKey={index === 0 ? '0' : null}>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>
-                      <h3>{item.date}</h3>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      {filterClosedDeals(item.deals)}
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
-              )}
-            </div>
-          )
-        } else {
-          return <div key={item.date}>{filterClosedDeals(item.deals)}</div>
-        }
-      })}
+      {getDealsByDates(getUniqueDates(deals))
+        .filter((item) => filterClosedDeals(item.deals).length !== 0) //todo после фильтра первый аккордеон должен быть открытым (сейчас необходимо перезагружать страницу)
+        .map((item, index) => {
+          if (item.date !== currentDate) {
+            currentDate = item.date
+            return (
+              <div key={item.date}>
+                {new Date(item.date).getTime() >=
+                Date.now() - weekInMilliseconds ? (
+                  <Accordion defaultActiveKey={index === 0 ? '0' : null}>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header>
+                        <h3>{item.date}</h3>
+                      </Accordion.Header>
+                      <Accordion.Body>
+                        {filterClosedDeals(item.deals)}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                ) : (
+                  ''
+                )}
+              </div>
+            )
+          } else {
+            return <div key={item.date}>{filterClosedDeals(item.deals)}</div>
+          }
+        })}
     </>
   )
 }
