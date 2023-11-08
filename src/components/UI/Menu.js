@@ -18,10 +18,7 @@ export default function Menu() {
           <AiOutlineMenu />
         </Button>
       </IconContext.Provider>
-      <Sidebar
-        sidebarExpanded={sidebarExpanded}
-        onSidebarItemSelect={() => setSidebarExpanded(false)}
-      />
+      <Sidebar sidebarExpanded={sidebarExpanded} />
     </div>
   )
 }

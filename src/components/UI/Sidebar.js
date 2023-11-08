@@ -20,7 +20,7 @@ const sidebarData = [
   },
 ]
 
-export default function Sidebar({ sidebarExpanded, onSidebarItemSelect }) {
+export default function Sidebar({ sidebarExpanded }) {
   return (
     <>
       <div
@@ -31,12 +31,7 @@ export default function Sidebar({ sidebarExpanded, onSidebarItemSelect }) {
         <ul className={styles.sidebarList}>
           {sidebarData.map((item, key) => {
             return (
-              <NavLink
-                to={item.link}
-                key={key}
-                className={styles.row}
-                onClick={() => onSidebarItemSelect(`/${item.link}`)} //when visit another page sidebar will close
-              >
+              <NavLink to={item.link} key={key} className={styles.row}>
                 <div className={styles.icon}>{item.icon}</div>
                 <div className={styles.title}>{item.title} </div>
               </NavLink>
