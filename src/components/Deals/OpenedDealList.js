@@ -4,9 +4,8 @@ export default function OpenedDealList({ openedDeals }) {
   return (
     <>
       {openedDeals.map((openedDeal) => (
-        <div style={{ marginBlockEnd: '10px' }}>
+        <div style={{ marginBlockEnd: '10px' }} key={openedDeal.id}>
           <OpenedDeal
-            key={openedDeal.id}
             name={openedDeal.name}
             ticker={openedDeal.ticker}
             sum={openedDeal.sum}
