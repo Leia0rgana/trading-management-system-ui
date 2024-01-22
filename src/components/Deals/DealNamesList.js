@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './DealNamesList.module.css'
 import Button from 'react-bootstrap/Button'
-import { baseURL } from './ClosedDealList'
+import { BASE_URL } from './ClosedDealList'
 
 function DealName({ name }) {
   return <>{name}</>
@@ -13,7 +13,7 @@ export default function DealNamesList({ clickedDealNames, onNameClick }) {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${baseURL}instruments`)
+      const response = await axios.get(`${BASE_URL}instruments`)
       const names = await response.data
       setNames(names)
     }

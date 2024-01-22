@@ -11,16 +11,16 @@ class DealsByDate {
   }
 }
 
-const weekInMilliseconds = 7 * 24 * 60 * 60 * 1000
+const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000
 
-export const baseURL = `http://localhost:8083/`
+export const BASE_URL = `http://localhost:8083/`
 
 export default function ClosedDealList({ clickedDealNames }) {
   const [deals, setDeals] = useState([])
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${baseURL}deals/closed`)
+      const response = await axios.get(`${BASE_URL}deals/closed`)
       const deals = await response.data
       setDeals(deals)
     }
@@ -96,7 +96,7 @@ export default function ClosedDealList({ clickedDealNames }) {
             return (
               <div key={item.date}>
                 {new Date(item.date).getTime() >=
-                Date.now() - weekInMilliseconds ? (
+                Date.now() - WEEK_IN_MILLISECONDS ? (
                   <Accordion defaultActiveKey={index === 0 ? '0' : null}>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>

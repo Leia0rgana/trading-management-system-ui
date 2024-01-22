@@ -1,10 +1,10 @@
 import styles from './Home.module.css'
-import DealNamesList from './Deals/DealNamesList'
-import ClosedDealList from './Deals/ClosedDealList'
-import OpenedDealList from './Deals/OpenedDealList'
+import DealNamesList from '../Deals/DealNamesList'
+import ClosedDealList from '../Deals/ClosedDealList'
+import OpenedDealList from '../Deals/OpenedDealList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { baseURL } from './Deals/ClosedDealList'
+import { BASE_URL } from '../Deals/ClosedDealList'
 import { useSearchParams } from 'react-router-dom'
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${baseURL}deals/open`)
+      const response = await axios.get(`${BASE_URL}deals/open`)
       const deals = await response.data
       setOpenedDeals(deals)
     }

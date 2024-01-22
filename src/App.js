@@ -1,9 +1,9 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './components/Home'
-import Archive from './components/Archive'
+import Home from './components/routes/Home'
+import Archive from './components/routes/Archive'
 import MainLayout from './layouts/MainLayout'
-import PageNotFound from './components/PageNotFound'
+import PageNotFound from './components/routes/PageNotFound'
 
 export default function App() {
   return (
