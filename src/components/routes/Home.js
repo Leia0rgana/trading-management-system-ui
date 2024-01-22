@@ -5,14 +5,9 @@ import OpenedDealList from '../Deals/OpenedDealList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../Deals/ClosedDealList'
-import { useSearchParams } from 'react-router-dom'
 
 export default function Home() {
-  const [buttonStyle, setButtonStyle] = useState('light')
   const [openedDeals, setOpenedDeals] = useState([])
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  const futureNamesFromURL = searchParams.getAll('futureNames') || ''
 
   useEffect(() => {
     async function fetchData() {
@@ -23,29 +18,14 @@ export default function Home() {
     fetchData()
   }, [])
 
-  const handleClick = (clickedDealName) => {
-    if (futureNamesFromURL.includes(clickedDealName)) {
-      const indexToDelete = futureNamesFromURL.indexOf(clickedDealName)
-      indexToDelete > -1 && futureNamesFromURL.splice(indexToDelete, 1)
-    } else {
-      futureNamesFromURL.push(clickedDealName)
-    }
-
-    setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
-    setSearchParams({ futureNames: futureNamesFromURL })
-  }
-
   return (
     <div className="main-content">
       <h1>Фьючерсы</h1>
-      <DealNamesList
-        clickedDealNames={futureNamesFromURL}
-        onNameClick={handleClick}
-      />
+      <DealNamesList />
       {openedDeals.length !== 0 ? (
         <div className={styles.deals}>
           <div className={styles.closedDeals}>
-            <ClosedDealList clickedDealNames={futureNamesFromURL} />
+            <ClosedDealList />
           </div>
           <div>
             <h3>Открытые сделки</h3>
@@ -54,7 +34,7 @@ export default function Home() {
         </div>
       ) : (
         <div className={styles.closedDeals}>
-          <ClosedDealList clickedDealNames={futureNamesFromURL} />
+          <ClosedDealList />
         </div>
       )}
     </div>

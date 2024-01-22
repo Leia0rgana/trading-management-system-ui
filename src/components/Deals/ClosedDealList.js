@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import ClosedDeal from './ClosedDeal'
 import './ClosedDealList.css'
+import { useSelector } from 'react-redux'
+import { selectDealNamesFilter } from '../../redux/slices/filterSlice'
 import axios from 'axios'
 import { Accordion } from 'react-bootstrap'
 
@@ -11,12 +13,14 @@ class DealsByDate {
   }
 }
 
-const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000
+const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000 * 90
 
 export const BASE_URL = `http://localhost:8083/`
 
-export default function ClosedDealList({ clickedDealNames }) {
+export default function ClosedDealList() {
   const [deals, setDeals] = useState([])
+
+  const dealNamesFilter = useSelector(selectDealNamesFilter)
 
   useEffect(() => {
     async function fetchData() {
@@ -59,9 +63,9 @@ export default function ClosedDealList({ clickedDealNames }) {
   const filterClosedDeals = (dealList) => {
     let dealListCopy = dealList
 
-    if (clickedDealNames.length !== 0) {
+    if (dealNamesFilter.length !== 0) {
       dealListCopy = dealList.filter((deal) => {
-        return clickedDealNames.includes(deal.name)
+        return dealNamesFilter.includes(deal.name)
       })
     }
     return getClosedDeals(dealListCopy)
