@@ -7,7 +7,8 @@ import { BASE_URL } from './ClosedDealList'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   selectDealNamesFilter,
-  setDealNames,
+  chooseDealName,
+  removeDealName,
 } from '../../redux/slices/filterSlice'
 
 function DealName({ name }) {
@@ -33,18 +34,26 @@ export default function DealNamesList() {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    if (futureNamesFromURL.length > 0) {
+      futureNamesFromURL.forEach((name) => {
+        dispatch(chooseDealName(name))
+      })
+    }
+  }, [])
+
   const handleClick = (clickedDealName) => {
     if (futureNamesFromURL.includes(clickedDealName)) {
       const indexToDelete = futureNamesFromURL.indexOf(clickedDealName)
       indexToDelete > -1 && futureNamesFromURL.splice(indexToDelete, 1)
+      dispatch(removeDealName(clickedDealName))
     } else {
       futureNamesFromURL.push(clickedDealName)
+      dispatch(chooseDealName(clickedDealName))
     }
 
     setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
     setSearchParams({ futureNames: futureNamesFromURL })
-
-    dispatch(setDealNames(clickedDealName))
   }
 
   return (

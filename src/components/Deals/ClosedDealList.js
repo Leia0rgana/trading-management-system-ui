@@ -13,7 +13,7 @@ class DealsByDate {
   }
 }
 
-const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000 * 90
+const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000 * 100
 
 export const BASE_URL = `http://localhost:8083/`
 

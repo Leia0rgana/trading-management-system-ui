@@ -8,8 +8,14 @@ const filterSLice = createSlice({
   initialState,
   name: 'filter',
   reducers: {
-    setDealNames: (state, action) => {
+    chooseDealName: (state, action) => {
       state.names.push(action.payload)
+    },
+    removeDealName: (state, action) => {
+      return {
+        ...state,
+        names: state.names.filter((name) => name !== action.payload),
+      }
     },
     resetFilter: () => {
       return initialState
@@ -19,6 +25,7 @@ const filterSLice = createSlice({
 
 export const selectDealNamesFilter = (state) => state.filter.names
 
-export const { setDealNames, resetFilter } = filterSLice.actions
+export const { chooseDealName, removeDealName, resetFilter } =
+  filterSLice.actions
 
 export default filterSLice.reducer
