@@ -9,3 +9,29 @@
   margin-right: auto;
   width: 70%;
 }
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow: auto;
+}
+
+.dealNames {
+  flex-grow: 10;
+}
+
+.icon {
+  flex-grow: 1;
+}
+
+.button {
+  border: none;
+  background-color: white;
+}
+
+@media screen and (max-width: 910px) {
+  .deals {
+    flex-direction: column;
+  }
+}
