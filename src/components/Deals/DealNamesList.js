@@ -21,7 +21,7 @@ export default function DealNamesList() {
   const dealNamesFilter = useSelector(selectDealNamesFilter)
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const futureNamesFromURL = searchParams.getAll('futureNames') || ''
+  let futureNamesFromURL = searchParams.getAll('futureNames') || []
 
   const dispatch = useDispatch()
 
@@ -40,12 +40,19 @@ export default function DealNamesList() {
         dispatch(chooseDealName(name))
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleClick = (clickedDealName) => {
+    let futureNamesString
+
+    if (futureNamesFromURL.length !== 0)
+      futureNamesFromURL = futureNamesFromURL[0].split('_')
+
     if (futureNamesFromURL.includes(clickedDealName)) {
-      const indexToDelete = futureNamesFromURL.indexOf(clickedDealName)
-      indexToDelete > -1 && futureNamesFromURL.splice(indexToDelete, 1)
+      futureNamesFromURL = futureNamesFromURL.filter(
+        (name) => name !== clickedDealName
+      )
       dispatch(removeDealName(clickedDealName))
     } else {
       futureNamesFromURL.push(clickedDealName)
@@ -53,7 +60,13 @@ export default function DealNamesList() {
     }
 
     setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
-    setSearchParams({ futureNames: futureNamesFromURL })
+
+    if (futureNamesFromURL.length === 0) {
+      setSearchParams()
+    } else {
+      futureNamesString = futureNamesFromURL.join('_')
+      setSearchParams({ futureNames: futureNamesString })
+    }
   }
 
   return (
