@@ -20,10 +20,12 @@ export default function DealNamesList() {
   const [buttonStyle, setButtonStyle] = useState('light')
   const dealNamesFilter = useSelector(selectDealNamesFilter)
   const [searchParams, setSearchParams] = useSearchParams()
+  const dispatch = useDispatch()
 
   let futureNamesFromURL = searchParams.getAll('futureNames') || []
 
-  const dispatch = useDispatch()
+  if (futureNamesFromURL.length > 0)
+    futureNamesFromURL = futureNamesFromURL[0].split('_')
 
   useEffect(() => {
     async function fetchData() {
@@ -45,9 +47,6 @@ export default function DealNamesList() {
 
   const handleClick = (clickedDealName) => {
     let futureNamesString
-
-    if (futureNamesFromURL.length !== 0)
-      futureNamesFromURL = futureNamesFromURL[0].split('_')
 
     if (futureNamesFromURL.includes(clickedDealName)) {
       futureNamesFromURL = futureNamesFromURL.filter(
