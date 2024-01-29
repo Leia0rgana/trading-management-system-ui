@@ -26,6 +26,10 @@ export default function DealNamesList() {
 
   if (futureNamesFromURL.length > 0)
     futureNamesFromURL = futureNamesFromURL[0].split('_')
+  else if (dealNamesFilter.length > 0) {
+    futureNamesFromURL = dealNamesFilter
+    setSearchParams({ futureNames: futureNamesFromURL.join('_') })
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -37,7 +41,7 @@ export default function DealNamesList() {
   }, [])
 
   useEffect(() => {
-    if (futureNamesFromURL.length > 0) {
+    if (futureNamesFromURL.length > 0 && dealNamesFilter.length === 0) {
       futureNamesFromURL.forEach((name) => {
         dispatch(chooseDealName(name))
       })
@@ -46,8 +50,6 @@ export default function DealNamesList() {
   }, [])
 
   const handleClick = (clickedDealName) => {
-    let futureNamesString
-
     if (futureNamesFromURL.includes(clickedDealName)) {
       futureNamesFromURL = futureNamesFromURL.filter(
         (name) => name !== clickedDealName
@@ -57,15 +59,11 @@ export default function DealNamesList() {
       futureNamesFromURL.push(clickedDealName)
       dispatch(chooseDealName(clickedDealName))
     }
-
     setButtonStyle(buttonStyle === 'light' ? 'success' : 'light')
 
-    if (futureNamesFromURL.length === 0) {
-      setSearchParams()
-    } else {
-      futureNamesString = futureNamesFromURL.join('_')
-      setSearchParams({ futureNames: futureNamesString })
-    }
+    futureNamesFromURL.length === 0
+      ? setSearchParams()
+      : setSearchParams({ futureNames: futureNamesFromURL.join('_') })
   }
 
   return (
