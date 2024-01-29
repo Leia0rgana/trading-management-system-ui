@@ -34,4 +34,7 @@
   .deals {
     flex-direction: column;
   }
+  .closedDeals {
+    width: 100%;
+  }
 }
