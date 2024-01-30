@@ -13,13 +13,12 @@ class DealsByDate {
   }
 }
 
-const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000 * 100
+const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000
 
 export const BASE_URL = `http://localhost:8083/`
 
-export default function ClosedDealList() {
+export default function ClosedDealList({ isArchive }) {
   const [deals, setDeals] = useState([])
-
   const dealNamesFilter = useSelector(selectDealNamesFilter)
 
   useEffect(() => {
@@ -60,17 +59,6 @@ export default function ClosedDealList() {
     return dealsByDates
   }
 
-  const filterClosedDeals = (dealList) => {
-    let dealListCopy = dealList
-
-    if (dealNamesFilter.length !== 0) {
-      dealListCopy = dealList.filter((deal) => {
-        return dealNamesFilter.includes(deal.name)
-      })
-    }
-    return getClosedDeals(dealListCopy)
-  }
-
   const getClosedDeals = (dealList) => {
     return dealList.map((deal) => (
       <ClosedDeal
@@ -89,8 +77,40 @@ export default function ClosedDealList() {
     ))
   }
 
+  const filterClosedDeals = (dealList) => {
+    let dealListCopy = dealList
+
+    if (dealNamesFilter.length !== 0) {
+      dealListCopy = dealList.filter((deal) => {
+        return dealNamesFilter.includes(deal.name)
+      })
+    }
+    return getClosedDeals(dealListCopy)
+  }
+
+  const getPastWeekDealsOrArchive = (date, deals, index) => {
+    if (
+      (new Date(date).getTime() >= Date.now() - WEEK_IN_MILLISECONDS &&
+        !isArchive) ||
+      (new Date(date).getTime() < Date.now() - WEEK_IN_MILLISECONDS &&
+        isArchive)
+    ) {
+      return (
+        <Accordion defaultActiveKey={index === 0 ? '0' : null}>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>
+              <h3>{date}</h3>
+            </Accordion.Header>
+            <Accordion.Body>{filterClosedDeals(deals)}</Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      )
+    }
+  }
+
   let currentDate = null
   return (
+    //todo message "no deals for the past week"
     <>
       {getDealsByDates(getUniqueDates(deals))
         .filter((item) => filterClosedDeals(item.deals).length !== 0) //todo после фильтра первый аккордеон должен быть открытым (сейчас необходимо перезагружать страницу)
@@ -99,21 +119,7 @@ export default function ClosedDealList() {
             currentDate = item.date
             return (
               <div key={item.date}>
-                {new Date(item.date).getTime() >=
-                Date.now() - WEEK_IN_MILLISECONDS ? (
-                  <Accordion defaultActiveKey={index === 0 ? '0' : null}>
-                    <Accordion.Item eventKey="0">
-                      <Accordion.Header>
-                        <h3>{item.date}</h3>
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        {filterClosedDeals(item.deals)}
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                ) : (
-                  ''
-                )}
+                {getPastWeekDealsOrArchive(item.date, item.deals, index)}
               </div>
             )
           } else {

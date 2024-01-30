@@ -59,7 +59,7 @@ export default function Home() {
       {openedDeals.length !== 0 ? (
         <div className={styles.deals}>
           <div className={styles.closedDeals}>
-            <ClosedDealList />
+            <ClosedDealList isArchive={false} />
           </div>
           <div>
             <h3>Открытые сделки</h3>
@@ -68,7 +68,7 @@ export default function Home() {
         </div>
       ) : (
         <div className={styles.closedDeals}>
-          <ClosedDealList />
+          <ClosedDealList isArchive={false} />
         </div>
       )}
     </div>
