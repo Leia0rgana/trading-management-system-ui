@@ -1,6 +1,7 @@
 import OpenedDeal from './OpenedDeal'
+import { memo } from 'react'
 
-export default function OpenedDealList({ openedDeals }) {
+export default memo(function OpenedDealList({ openedDeals }) {
   return (
     <>
       {openedDeals.map((openedDeal) => (
@@ -18,4 +19,4 @@ export default function OpenedDealList({ openedDeals }) {
       ))}
     </>
   )
-}
+})
