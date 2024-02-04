@@ -15,7 +15,7 @@ class DealsByDate {
 
 const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000
 
-export const BASE_URL = `http://localhost:8083/`
+export const BASE_URL = `http://localhost:8083`
 
 export default function ClosedDealList({ isArchive }) {
   const [deals, setDeals] = useState([])
@@ -23,7 +23,7 @@ export default function ClosedDealList({ isArchive }) {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${BASE_URL}deals/closed`)
+      const response = await axios.get(`${BASE_URL}/deals/closed`)
       const deals = await response.data
       setDeals(deals)
     }

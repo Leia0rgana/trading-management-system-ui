@@ -24,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${BASE_URL}deals/open`)
+      const response = await axios.get(`${BASE_URL}/deals/open`)
       const deals = await response.data
       setOpenedDeals(deals)
     }

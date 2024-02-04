@@ -33,7 +33,7 @@ export default function DealNamesList() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(`${BASE_URL}instruments`)
+      const response = await axios.get(`${BASE_URL}/instruments`)
       const names = await response.data
       setNames(names)
     }
