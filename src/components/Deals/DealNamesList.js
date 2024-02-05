@@ -22,15 +22,6 @@ export default function DealNamesList() {
   const [searchParams, setSearchParams] = useSearchParams()
   const dispatch = useDispatch()
 
-  let futureNamesFromURL = searchParams.getAll('futureNames') || []
-
-  if (futureNamesFromURL.length > 0)
-    futureNamesFromURL = futureNamesFromURL[0].split('_')
-  else if (dealNamesFilter.length > 0) {
-    futureNamesFromURL = dealNamesFilter
-    setSearchParams({ futureNames: futureNamesFromURL.join('_') })
-  }
-
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get(`${BASE_URL}/instruments`)
@@ -40,14 +31,19 @@ export default function DealNamesList() {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    if (futureNamesFromURL.length > 0 && dealNamesFilter.length === 0) {
+  let futureNamesFromURL = searchParams.getAll('futureNames') || []
+
+  if (futureNamesFromURL.length > 0) {
+    futureNamesFromURL = futureNamesFromURL[0].split('_')
+    if (dealNamesFilter.length === 0) {
       futureNamesFromURL.forEach((name) => {
         dispatch(chooseDealName(name))
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  } else if (dealNamesFilter.length > 0) {
+    futureNamesFromURL = dealNamesFilter
+    setSearchParams({ futureNames: futureNamesFromURL.join('_') })
+  }
 
   const handleClick = (clickedDealName) => {
     if (futureNamesFromURL.includes(clickedDealName)) {
