@@ -23,12 +23,24 @@ export default function Home() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    const controller = new AbortController()
+
     async function fetchData() {
-      const response = await axios.get(`${BASE_URL}/deals/open`)
-      const deals = await response.data
-      setOpenedDeals(deals)
+      try {
+        const response = await axios.get(`${BASE_URL}/deals/open`, {
+          signal: controller.signal,
+        })
+        const deals = await response.data
+        setOpenedDeals(deals)
+      } catch (error) {
+        console.log(error.message)
+      }
     }
     fetchData()
+
+    return () => {
+      controller.abort()
+    }
   }, [])
 
   return (

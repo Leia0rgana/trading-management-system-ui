@@ -23,12 +23,24 @@ export default function DealNamesList() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    const controller = new AbortController()
+
     async function fetchData() {
-      const response = await axios.get(`${BASE_URL}/instruments`)
-      const names = await response.data
-      setNames(names)
+      try {
+        const response = await axios.get(`${BASE_URL}/instruments`, {
+          signal: controller.signal,
+        })
+        const names = await response.data
+        setNames(names)
+      } catch (error) {
+        console.log(error.message)
+      }
     }
     fetchData()
+
+    return () => {
+      controller.abort()
+    }
   }, [])
 
   let futureNamesFromURL = searchParams.getAll('futureNames') || []

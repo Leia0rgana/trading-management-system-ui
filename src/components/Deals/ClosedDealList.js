@@ -22,12 +22,22 @@ export default function ClosedDealList({ isArchive }) {
   const dealNamesFilter = useSelector(selectDealNamesFilter)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     async function fetchData() {
-      const response = await axios.get(`${BASE_URL}/deals/closed`)
-      const deals = await response.data
-      setDeals(deals)
+      try {
+        const response = await axios.get(`${BASE_URL}/deals/closed`)
+        const deals = await response.data
+        setDeals(deals)
+      } catch (error) {
+        console.log(error.message)
+      }
     }
     fetchData()
+
+    return () => {
+      controller.abort()
+    }
   }, [])
 
   const getUniqueDates = (deals) => {
