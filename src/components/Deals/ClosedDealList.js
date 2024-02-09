@@ -26,7 +26,9 @@ export default function ClosedDealList({ isArchive }) {
 
     async function fetchData() {
       try {
-        const response = await axios.get(`${BASE_URL}/deals/closed`)
+        const response = await axios.get(`${BASE_URL}/deals/closed`, {
+          signal: controller.signal,
+        })
         const deals = await response.data
         setDeals(deals)
       } catch (error) {
