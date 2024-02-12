@@ -3,11 +3,10 @@ import DealNamesList from '../Deals/DealNamesList'
 import ClosedDealList from '../Deals/ClosedDealList'
 import OpenedDealList from '../Deals/OpenedDealList'
 import Button from 'react-bootstrap/Button'
-import { useState, useEffect } from 'react'
 import { MdClear } from 'react-icons/md'
 import { IconContext } from 'react-icons'
-import axios from 'axios'
-import { BASE_URL } from '../Deals/ClosedDealList'
+import { useQuery } from '@tanstack/react-query'
+import { fetchDeals } from '../../services/deals'
 import {
   selectDealNamesFilter,
   resetFilter,
@@ -16,73 +15,59 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
-  const [openedDeals, setOpenedDeals] = useState([])
   const dealNamesFilter = useSelector(selectDealNamesFilter)
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const controller = new AbortController()
+  const { data, isSuccess, isLoading } = useQuery({
+    queryKey: ['openedDeals'],
+    queryFn: () => fetchDeals('deals/open'),
+  })
 
-    async function fetchData() {
-      try {
-        const response = await axios.get(`${BASE_URL}/deals/open`, {
-          signal: controller.signal,
-        })
-        const deals = await response.data
-        setOpenedDeals(deals)
-      } catch (error) {
-        console.log(error.message)
-      }
-    }
-    fetchData()
+  if (isLoading) return <h3>loading...</h3>
 
-    return () => {
-      controller.abort()
-    }
-  }, [])
-
-  return (
-    <div className="main-content">
-      <h1>Фьючерсы</h1>
-      <div className={styles.filter}>
-        {dealNamesFilter.length > 0 && (
-          <div className={styles.icon}>
-            <IconContext.Provider value={{ color: '#A8A8A8', size: '2rem' }}>
-              <Button
-                title="Сбросить фильтры"
-                variant="light"
-                className={styles.button}
-                onClick={() => {
-                  dispatch(resetFilter())
-                  navigate('/')
-                }}
-              >
-                <MdClear />
-              </Button>
-            </IconContext.Provider>
+  if (isSuccess)
+    return (
+      <div className="main-content">
+        <h1>Фьючерсы</h1>
+        <div className={styles.filter}>
+          {dealNamesFilter.length > 0 && (
+            <div className={styles.icon}>
+              <IconContext.Provider value={{ color: '#A8A8A8', size: '2rem' }}>
+                <Button
+                  title="Сбросить фильтры"
+                  variant="light"
+                  className={styles.button}
+                  onClick={() => {
+                    dispatch(resetFilter())
+                    navigate('/')
+                  }}
+                >
+                  <MdClear />
+                </Button>
+              </IconContext.Provider>
+            </div>
+          )}
+          <div className={styles.dealNames}>
+            <DealNamesList />
           </div>
-        )}
-        <div className={styles.dealNames}>
-          <DealNamesList />
         </div>
-      </div>
-      {openedDeals.length !== 0 ? (
-        <div className={styles.deals}>
+        {data.length !== 0 ? (
+          <div className={styles.deals}>
+            <div className={styles.closedDeals}>
+              <ClosedDealList isArchive={false} />
+            </div>
+            <div>
+              <h3>Открытые сделки</h3>
+              <OpenedDealList openedDeals={data} />
+            </div>
+          </div>
+        ) : (
           <div className={styles.closedDeals}>
             <ClosedDealList isArchive={false} />
           </div>
-          <div>
-            <h3>Открытые сделки</h3>
-            <OpenedDealList openedDeals={openedDeals} />
-          </div>
-        </div>
-      ) : (
-        <div className={styles.closedDeals}>
-          <ClosedDealList isArchive={false} />
-        </div>
-      )}
-    </div>
-  )
+        )}
+      </div>
+    )
 }
