@@ -1,16 +1,13 @@
 import styles from './Home.module.css'
-import DealNamesList from '../Deals/DealNamesList'
-import ClosedDealList from '../Deals/ClosedDealList'
-import OpenedDealList from '../Deals/OpenedDealList'
+import DealNamesList from '../components/Deals/deal-names/DealNamesList'
+import ClosedDealList from '../components/Deals/closed-deals/ClosedDealList'
+import OpenedDealList from '../components/Deals/opened-deals/OpenedDealList'
 import Button from 'react-bootstrap/Button'
 import { MdClear } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 import { useQuery } from '@tanstack/react-query'
-import { fetchDeals } from '../../services/deals'
-import {
-  selectDealNamesFilter,
-  resetFilter,
-} from '../../redux/slices/filterSlice'
+import { fetchDeals } from '../services/deals'
+import { selectDealNamesFilter, resetFilter } from '../redux/slices/filterSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 

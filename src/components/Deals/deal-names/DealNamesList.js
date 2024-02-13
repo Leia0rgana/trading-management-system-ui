@@ -7,10 +7,10 @@ import {
   selectDealNamesFilter,
   chooseDealName,
   removeDealName,
-} from '../../redux/slices/filterSlice'
+} from '../../../redux/slices/filterSlice'
 // import useTodosQuery from '../../hooks/useDealsQuery'
 import { useQuery } from '@tanstack/react-query'
-import { fetchDeals } from '../../services/deals'
+import { fetchDeals } from '../../../services/deals'
 
 function DealName({ name }) {
   return <>{name}</>

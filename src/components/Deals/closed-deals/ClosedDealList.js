@@ -1,10 +1,10 @@
 import ClosedDeal from './ClosedDeal'
 import './ClosedDealList.css'
 import { useSelector } from 'react-redux'
-import { selectDealNamesFilter } from '../../redux/slices/filterSlice'
+import { selectDealNamesFilter } from '../../../redux/slices/filterSlice'
 import { Accordion } from 'react-bootstrap'
 import { useQuery } from '@tanstack/react-query'
-import { fetchDeals } from '../../services/deals'
+import { fetchDeals } from '../../../services/deals'
 
 class DealsByDate {
   constructor(date, deals) {
