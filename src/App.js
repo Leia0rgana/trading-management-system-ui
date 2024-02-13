@@ -1,9 +1,9 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './components/routes/Home'
-import Archive from './components/routes/Archive'
+import Home from './pages/Home'
+import Archive from './pages/Archive'
 import MainLayout from './layouts/MainLayout'
-import PageNotFound from './components/routes/PageNotFound'
+import PageNotFound from './pages/PageNotFound'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()

@@ -1,4 +1,4 @@
-import ClosedDealList from '../Deals/ClosedDealList'
+import ClosedDealList from '../components/Deals/closed-deals/ClosedDealList'
 import styles from './Home.module.css'
 
 export default function Archive() {
