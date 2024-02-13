@@ -5,11 +5,10 @@ import OpenedDealList from '../components/Deals/opened-deals/OpenedDealList'
 import Button from 'react-bootstrap/Button'
 import { MdClear } from 'react-icons/md'
 import { IconContext } from 'react-icons'
-import { useQuery } from '@tanstack/react-query'
-import { fetchDeals } from '../services/deals'
 import { selectDealNamesFilter, resetFilter } from '../redux/slices/filterSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import useDealsQuery from '../hooks/useDealsQuery'
 
 export default function Home() {
   const dealNamesFilter = useSelector(selectDealNamesFilter)
@@ -17,10 +16,10 @@ export default function Home() {
 
   const dispatch = useDispatch()
 
-  const { data, isSuccess, isLoading } = useQuery({
-    queryKey: ['openedDeals'],
-    queryFn: () => fetchDeals('deals/open'),
-  })
+  const { data, isSuccess, isLoading } = useDealsQuery(
+    'openedDeals',
+    'deals/open'
+  )
 
   if (isLoading) return <h3>loading...</h3>
 

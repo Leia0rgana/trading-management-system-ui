@@ -3,8 +3,7 @@ import './ClosedDealList.css'
 import { useSelector } from 'react-redux'
 import { selectDealNamesFilter } from '../../../redux/slices/filterSlice'
 import { Accordion } from 'react-bootstrap'
-import { useQuery } from '@tanstack/react-query'
-import { fetchDeals } from '../../../services/deals'
+import useDealsQuery from '../../../hooks/useDealsQuery'
 
 class DealsByDate {
   constructor(date, deals) {
@@ -18,10 +17,10 @@ const WEEK_IN_MILLISECONDS = 7 * 24 * 60 * 60 * 1000
 export default function ClosedDealList({ isArchive }) {
   const dealNamesFilter = useSelector(selectDealNamesFilter)
 
-  const { data, isSuccess, isLoading } = useQuery({
-    queryKey: ['closedDeals'],
-    queryFn: () => fetchDeals('deals/closed'),
-  })
+  const { data, isSuccess, isLoading } = useDealsQuery(
+    'closedDeals',
+    'deals/closed'
+  )
 
   const getUniqueDates = (deals) => {
     const uniqueDates = []

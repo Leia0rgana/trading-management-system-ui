@@ -8,9 +8,7 @@ import {
   chooseDealName,
   removeDealName,
 } from '../../../redux/slices/filterSlice'
-// import useTodosQuery from '../../hooks/useDealsQuery'
-import { useQuery } from '@tanstack/react-query'
-import { fetchDeals } from '../../../services/deals'
+import useDealsQuery from '../../../hooks/useDealsQuery'
 
 function DealName({ name }) {
   return <>{name}</>
@@ -22,10 +20,10 @@ export default function DealNamesList() {
   const [searchParams, setSearchParams] = useSearchParams()
   const dispatch = useDispatch()
 
-  const { data, isSuccess, isLoading } = useQuery({
-    queryKey: ['futureNames'],
-    queryFn: () => fetchDeals('instruments'),
-  })
+  const { data, isSuccess, isLoading } = useDealsQuery(
+    'futureNames',
+    'instruments'
+  )
 
   let futureNamesFromURL = searchParams.getAll('futureNames') || []
 
