@@ -7,8 +7,8 @@ import {
   selectDealNamesFilter,
   chooseDealName,
   removeDealName,
-} from '../../../redux/slices/filterSlice'
-import useDealsQuery from '../../../hooks/useDealsQuery'
+} from '../../redux/slices/filterSlice'
+import useDealsQuery from '../../hooks/useDealsQuery'
 
 function DealName({ name }) {
   return <>{name}</>

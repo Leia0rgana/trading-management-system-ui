@@ -1,9 +1,9 @@
 import ClosedDeal from './ClosedDeal'
 import './ClosedDealList.css'
 import { useSelector } from 'react-redux'
-import { selectDealNamesFilter } from '../../../redux/slices/filterSlice'
+import { selectDealNamesFilter } from '../../redux/slices/filterSlice'
 import { Accordion } from 'react-bootstrap'
-import useDealsQuery from '../../../hooks/useDealsQuery'
+import useDealsQuery from '../../hooks/useDealsQuery'
 
 class DealsByDate {
   constructor(date, deals) {
