@@ -1,0 +1,644 @@
+[
+  {
+    "_id": "32415a21-07d9-465c-98cb-797e5701c0d0",
+    "profit": "-0.0",
+    "name": "Сбер Банк (обыкновенные)",
+    "profitInPercents": "0",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "98712.0000000000",
+    "ticker": "SRM3",
+    "dateTime": {
+      "$date": "2024-01-04T11:31:55.713Z"
+    },
+    "open": false,
+    "quantity": 4,
+    "price": "24678.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SRM3",
+      "dateTime": {
+        "$date": "2023-06-14T11:32:10.625Z"
+      },
+      "quantity": 4,
+      "price": "24708.0",
+      "sum": "98832.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "4f749067-2493-4033-9b02-952f6681eacf",
+    "profit": "-15.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.0600",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "26985.0000000000",
+    "ticker": "POM3",
+    "dateTime": {
+      "$date": "2024-01-04T12:20:28.039Z"
+    },
+    "open": false,
+    "quantity": 5,
+    "price": "5397.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "POM3",
+      "dateTime": {
+        "$date": "2023-06-14T12:20:28.310Z"
+      },
+      "quantity": 5,
+      "price": "5400.0",
+      "sum": "27000.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "fb15f813-f7f7-4d99-bd0d-60635520f29e",
+    "profit": "-30.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.1100",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "27070.0000000000",
+    "ticker": "POM3",
+    "dateTime": {
+      "$date": "2023-06-14T12:24:14.797Z"
+    },
+    "open": false,
+    "quantity": 5,
+    "price": "5414.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "POM3",
+      "dateTime": {
+        "$date": "2023-06-14T12:24:15.195Z"
+      },
+      "quantity": 5,
+      "price": "5408.0",
+      "sum": "27040.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "112b838f-50f3-4b36-bbe6-331bb2ce3d2e",
+    "profit": "-20.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.0700",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "27040.0000000000",
+    "ticker": "POM3",
+    "dateTime": {
+      "$date": "2024-01-02T12:25:30.252Z"
+    },
+    "open": false,
+    "quantity": 5,
+    "price": "5408.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "POM3",
+      "dateTime": {
+        "$date": "2023-06-14T12:25:30.758Z"
+      },
+      "quantity": 5,
+      "price": "5412.0",
+      "sum": "27060.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "35de89e5-6d50-4284-a124-9e4eb413e6f8",
+    "profit": "14.0000000000",
+    "name": "Курс доллар - рубль",
+    "profitInPercents": "0.0200",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "84070.0000000000",
+    "ticker": "SiM3",
+    "dateTime": {
+      "$date": "2023-06-14T13:50:01.598Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "84070.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SiM3",
+      "dateTime": {
+        "$date": "2023-06-14T13:50:01.722Z"
+      },
+      "quantity": 1,
+      "price": "84056.0",
+      "sum": "84056.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "134977c7-3ee5-40da-a218-828626c97d5f",
+    "profit": "-12.0000000000",
+    "name": "Курс доллар - рубль",
+    "profitInPercents": "-0.0100",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "84046.0000000000",
+    "ticker": "SiM3",
+    "dateTime": {
+      "$date": "2024-01-02T13:54:15.579Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "84046.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "SiM3",
+      "dateTime": {
+        "$date": "2023-06-14T13:54:17.211Z"
+      },
+      "quantity": 1,
+      "price": "84034.0",
+      "sum": "84034.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "cfb9024e-1328-4fb5-adfc-c39a5f509522",
+    "profit": "-50.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.1900",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "26830.0000000000",
+    "ticker": "POM3",
+    "dateTime": {
+      "$date": "2023-06-14T14:53:11.765Z"
+    },
+    "open": false,
+    "quantity": 5,
+    "price": "5366.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "POM3",
+      "dateTime": {
+        "$date": "2023-06-14T14:53:14.179Z"
+      },
+      "quantity": 5,
+      "price": "5356.0",
+      "sum": "26780.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "ba15a66a-7cfd-459b-8700-ecfd71228784",
+    "profit": "-55.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.2000",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "26855.0000000000",
+    "ticker": "POM3",
+    "dateTime": {
+      "$date": "2023-06-14T14:54:06.981Z"
+    },
+    "open": false,
+    "quantity": 5,
+    "price": "5371.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "POM3",
+      "dateTime": {
+        "$date": "2023-06-14T14:54:07.686Z"
+      },
+      "quantity": 5,
+      "price": "5360.0",
+      "sum": "26800.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "1c0e85bf-5bd3-4155-9014-ff7178295564",
+    "profit": "-9.0000000000",
+    "name": "Курс доллар - рубль",
+    "profitInPercents": "-0.0100",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "83940.0000000000",
+    "ticker": "SiM3",
+    "dateTime": {
+      "$date": "2023-06-14T15:46:04.526Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "83940.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "SiM3",
+      "dateTime": {
+        "$date": "2023-06-14T15:47:50.886Z"
+      },
+      "quantity": 1,
+      "price": "83931.0",
+      "sum": "83931.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "c55df242-92c0-4814-ba7e-0633d88e6d2c",
+    "profit": "-16.78202000000",
+    "name": "Серебро",
+    "profitInPercents": "-0.0800",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "20197.16107000000",
+    "ticker": "SVM3",
+    "dateTime": {
+      "$date": "2023-06-14T16:42:00.560Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "24.07",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "SVM3",
+      "dateTime": {
+        "$date": "2023-06-14T16:44:44.640Z"
+      },
+      "quantity": 1,
+      "price": "24.05",
+      "sum": "20180.37905000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "f246892a-62ed-4452-b23b-252cc94175e9",
+    "profit": "-25.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.0900",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "26985.0000000000",
+    "ticker": "POM3",
+    "dateTime": {
+      "$date": "2023-06-14T16:50:05.379Z"
+    },
+    "open": false,
+    "quantity": 5,
+    "price": "5397.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "POM3",
+      "dateTime": {
+        "$date": "2023-06-14T16:50:06.201Z"
+      },
+      "quantity": 5,
+      "price": "5402.0",
+      "sum": "27010.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "06be856d-f112-405a-9a0b-57fb2ca56b3c",
+    "profit": "-16.782020000000",
+    "name": "Природный газ",
+    "profitInPercents": "-0.0800",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "19744.046530000000",
+    "ticker": "NGM3",
+    "dateTime": {
+      "$date": "2023-06-14T17:37:45.242Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "2.353",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "NGM3",
+      "dateTime": {
+        "$date": "2023-06-14T17:37:55.635Z"
+      },
+      "quantity": 1,
+      "price": "2.351",
+      "sum": "19727.264510000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "d052c6ba-7582-41cc-ac9b-df853e6deb6b",
+    "profit": "200.0000000000",
+    "name": "Сбер Банк (обыкновенные)",
+    "profitInPercents": "0.2000",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "98040.0000000000",
+    "ticker": "SRM3",
+    "dateTime": {
+      "$date": "2023-06-14T18:23:37.009Z"
+    },
+    "open": false,
+    "quantity": 4,
+    "price": "24510.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SRM3",
+      "dateTime": {
+        "$date": "2023-06-14T18:24:02.526Z"
+      },
+      "quantity": 4,
+      "price": "24460.0",
+      "sum": "97840.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "c045e3d8-35d6-404b-a168-8fb169737cab",
+    "name": "Серебро",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "19737.49549000000",
+    "ticker": "SVM3",
+    "dateTime": {
+      "$date": "2023-06-15T13:11:44.269Z"
+    },
+    "open": true,
+    "quantity": 1,
+    "price": "23.47",
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "076b1563-f75f-40fc-850d-6e6857d0ec39",
+    "profit": "-13.0000000000",
+    "name": "Курс доллар - рубль",
+    "profitInPercents": "-0.0200",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "83121.0000000000",
+    "ticker": "SiU3",
+    "dateTime": {
+      "$date": "2023-06-15T17:35:37.884Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "83121.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SiU3",
+      "dateTime": {
+        "$date": "2023-06-15T17:35:44.457Z"
+      },
+      "quantity": 1,
+      "price": "83134.0",
+      "sum": "83134.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "eb67987b-a53c-4c3e-b437-80b699470336",
+    "profit": "-16.84496000000",
+    "name": "Серебро",
+    "profitInPercents": "-0.0800",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "20382.4016000000",
+    "ticker": "SVU3",
+    "dateTime": {
+      "$date": "2023-06-19T10:49:11.297Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "24.2",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SVU3",
+      "dateTime": {
+        "$date": "2023-06-19T11:01:08.556Z"
+      },
+      "quantity": 1,
+      "price": "24.22",
+      "sum": "20399.24656000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "b82fa690-dd86-47ec-9fb0-87aaf2e77fad",
+    "profit": "-1.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.0200",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "5709.0000000000",
+    "ticker": "POU3",
+    "dateTime": {
+      "$date": "2023-06-19T10:49:15.928Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "5709.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "POU3",
+      "dateTime": {
+        "$date": "2023-06-19T10:49:18.096Z"
+      },
+      "quantity": 1,
+      "price": "5708.0",
+      "sum": "5708.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "eb194188-94ac-42f9-92cf-b76b3d3d2d54",
+    "profit": "18.0000000000",
+    "name": "Курс доллар - рубль",
+    "profitInPercents": "0.0200",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "83491.0000000000",
+    "ticker": "SiU3",
+    "dateTime": {
+      "$date": "2023-06-19T11:04:21.666Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "83491.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SiU3",
+      "dateTime": {
+        "$date": "2023-06-19T11:04:32.243Z"
+      },
+      "quantity": 1,
+      "price": "83473.0",
+      "sum": "83473.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "778e138d-1132-437d-b135-15f721f1921a",
+    "profit": "-10.0000000000",
+    "name": "Курс доллар - рубль",
+    "profitInPercents": "-0.0100",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "83647.0000000000",
+    "ticker": "SiU3",
+    "dateTime": {
+      "$date": "2023-06-19T13:54:31.198Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "83647.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SiU3",
+      "dateTime": {
+        "$date": "2023-06-19T13:55:22.611Z"
+      },
+      "quantity": 1,
+      "price": "83657.0",
+      "sum": "83657.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "e3ddc9c4-7914-4476-80d3-87177fd0523a",
+    "profit": "16.812400000000",
+    "name": "Природный газ",
+    "profitInPercents": "0.0800",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "21931.775800000000",
+    "ticker": "NGM3",
+    "dateTime": {
+      "$date": "2023-06-19T14:08:48.797Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "2.609",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "NGM3",
+      "dateTime": {
+        "$date": "2023-06-19T14:10:14.541Z"
+      },
+      "quantity": 1,
+      "price": "2.611",
+      "sum": "21948.588200000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "ade03f01-0b54-4fb6-bc4f-23c87b8462ec",
+    "profit": "16.812400000000",
+    "name": "Природный газ",
+    "profitInPercents": "0.0800",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "22133.524600000000",
+    "ticker": "NGM3",
+    "dateTime": {
+      "$date": "2023-06-19T15:12:22.379Z"
+    },
+    "open": false,
+    "quantity": 1,
+    "price": "2.633",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "NGM3",
+      "dateTime": {
+        "$date": "2023-06-19T15:12:26.324Z"
+      },
+      "quantity": 1,
+      "price": "2.631",
+      "sum": "22116.712200000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "f045e3d8-35d6-404b-a168-8fb169737cab",
+    "name": "Природный газ",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "19737.49549000000",
+    "ticker": "SVM3",
+    "dateTime": {
+      "$date": "2023-06-15T13:11:44.269Z"
+    },
+    "open": true,
+    "quantity": 1,
+    "price": "23.47",
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "c05553d8-35d6-404b-a168-8fb169737cab",
+    "name": "Polymetal",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "19737.49549000000",
+    "ticker": "SVM3",
+    "dateTime": {
+      "$date": "2023-06-15T13:11:44.269Z"
+    },
+    "open": true,
+    "quantity": 41,
+    "price": "23.47",
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "c045e3d8-35d6-404b-4d8r-8fb169737cab",
+    "name": "Серебро",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "19737.49549000000",
+    "ticker": "SVM3",
+    "dateTime": {
+      "$date": "2023-06-15T13:11:44.269Z"
+    },
+    "open": true,
+    "quantity": 18,
+    "price": "23.47",
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "f045e3d8-77аа-404b-a168-8fb169737cab",
+    "name": "Сбер Банк (обыкновенные)",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "19737.49549000000",
+    "ticker": "SVM3",
+    "dateTime": {
+      "$date": "2023-06-15T13:11:44.269Z"
+    },
+    "open": true,
+    "quantity": 1,
+    "price": "23.47",
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "32415a21-5789-465c-98cb-797e5701c0d0",
+    "profit": "-0.0",
+    "name": "Сбер Банк (обыкновенные)",
+    "profitInPercents": "0",
+    "orderDirection": "ORDER_DIRECTION_SELL",
+    "sum": "98712.0000000000",
+    "ticker": "SRM3",
+    "dateTime": {
+      "$date": "2023-10-14T11:31:55.713Z"
+    },
+    "open": false,
+    "quantity": 4,
+    "price": "24678.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_BUY",
+      "ticker": "SRM3",
+      "dateTime": {
+        "$date": "2023-10-17T11:32:10.625Z"
+      },
+      "quantity": 4,
+      "price": "24708.0",
+      "sum": "98832.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  },
+  {
+    "_id": "frtwf-f7f7-4d99-hhhh-60635520f29e",
+    "profit": "-30.0000000000",
+    "name": "Polymetal",
+    "profitInPercents": "-0.1100",
+    "orderDirection": "ORDER_DIRECTION_BUY",
+    "sum": "27070.0000000000",
+    "ticker": "POM3",
+    "dateTime": {
+      "$date": "2023-11-08T12:24:14.797Z"
+    },
+    "open": false,
+    "quantity": 5,
+    "price": "5414.0",
+    "closedDeal": {
+      "orderDirection": "ORDER_DIRECTION_SELL",
+      "ticker": "POM3",
+      "dateTime": {
+        "$date": "2023-06-14T12:24:15.195Z"
+      },
+      "quantity": 5,
+      "price": "5408.0",
+      "sum": "27040.0000000000"
+    },
+    "_class": "ru.dankos.domain.Deal"
+  }
+]

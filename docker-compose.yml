@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:7.0.3-rc1-jammy
+    container_name: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - data:/data/db
+    networks:
+      - kafka_network
+  traiding-management-system:
+    image: dankosik/traiding-management-system:1.0.7
+    container_name: traiding-management-system
+    ports:
+      - '8083:8083'
+    networks:
+      - kafka_network
+    depends_on:
+      - kafka
+volumes:
+  data: {}
+networks:
+  kafka_network: {}
