@@ -8,7 +8,7 @@
     "sum": "98712.0000000000",
     "ticker": "SRM3",
     "dateTime": {
-      "$date": "2024-01-04T11:31:55.713Z"
+      "$date": "2024-05-04T11:31:55.713Z"
     },
     "open": false,
     "quantity": 4,
@@ -464,7 +464,7 @@
     "sum": "83647.0000000000",
     "ticker": "SiU3",
     "dateTime": {
-      "$date": "2023-06-19T13:54:31.198Z"
+      "$date": "2024-05-19T13:54:31.198Z"
     },
     "open": false,
     "quantity": 1,
@@ -540,7 +540,7 @@
     "sum": "19737.49549000000",
     "ticker": "SVM3",
     "dateTime": {
-      "$date": "2023-06-15T13:11:44.269Z"
+      "$date": "2023-05-18T13:11:44.269Z"
     },
     "open": true,
     "quantity": 1,
@@ -554,7 +554,7 @@
     "sum": "19737.49549000000",
     "ticker": "SVM3",
     "dateTime": {
-      "$date": "2023-06-15T13:11:44.269Z"
+      "$date": "2024-05-21T13:11:44.269Z"
     },
     "open": true,
     "quantity": 41,
@@ -568,7 +568,7 @@
     "sum": "19737.49549000000",
     "ticker": "SVM3",
     "dateTime": {
-      "$date": "2023-06-15T13:11:44.269Z"
+      "$date": "2024-05-21T13:11:44.269Z"
     },
     "open": true,
     "quantity": 18,
@@ -582,7 +582,7 @@
     "sum": "19737.49549000000",
     "ticker": "SVM3",
     "dateTime": {
-      "$date": "2023-06-15T13:11:44.269Z"
+      "$date": "2024-05-20T13:11:44.269Z"
     },
     "open": true,
     "quantity": 1,
@@ -607,7 +607,7 @@
       "orderDirection": "ORDER_DIRECTION_BUY",
       "ticker": "SRM3",
       "dateTime": {
-        "$date": "2023-10-17T11:32:10.625Z"
+        "$date": "2024-05-17T11:32:10.625Z"
       },
       "quantity": 4,
       "price": "24708.0",
@@ -633,7 +633,7 @@
       "orderDirection": "ORDER_DIRECTION_SELL",
       "ticker": "POM3",
       "dateTime": {
-        "$date": "2023-06-14T12:24:15.195Z"
+        "$date": "2024-05-17T12:24:15.195Z"
       },
       "quantity": 5,
       "price": "5408.0",
